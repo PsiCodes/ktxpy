@@ -26,14 +26,14 @@ import android.view.inputmethod.ExtractedText;
 import android.view.inputmethod.ExtractedTextRequest;
 import android.view.inputmethod.InputConnection;
 import android.widget.Scroller;
-
-import com.termoneplus.utils.SimpleClipboardManager;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Hashtable;
 
 import androidx.annotation.RequiresApi;
+
+import com.termoneplus.utils.SimpleClipboardManager;
+
 import jackpal.androidterm.emulatorview.compat.KeycodeConstants;
 import jackpal.androidterm.emulatorview.compat.Patterns;
 
