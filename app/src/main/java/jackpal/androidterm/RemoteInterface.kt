@@ -1,130 +1,122 @@
-package jackpal.androidterm;
+package jackpal.androidterm
 
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
+import com.termoneplus.RemoteActionActivity
+import android.content.Intent
+import android.net.Uri
+import android.text.TextUtils
+import com.Application
+import jackpal.androidterm.RemoteInterface
+import jackpal.androidterm.TermService
+import jackpal.androidterm.emulatorview.TermSession
+import com.termoneplus.TermActivity
+import jackpal.androidterm.GenericTermSession
+import java.io.File
+import java.io.IOException
+import java.lang.StringBuilder
+import java.util.*
 
-import com.Application;
-import com.termoneplus.RemoteActionActivity;
-import com.termoneplus.TermActivity;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-
-import androidx.annotation.NonNull;
-import jackpal.androidterm.emulatorview.TermSession;
-
-
-public class RemoteInterface extends RemoteActionActivity {
-
-    /**
-     * Quote a string so it can be used as a parameter in bash and similar shells.
-     */
-    public static String quoteForBash(String s) {
-        StringBuilder builder = new StringBuilder();
-        String specialChars = "\"\\$`!";
-        builder.append('"');
-        int length = s.length();
-        for (int i = 0; i < length; i++) {
-            char c = s.charAt(i);
-            if (specialChars.indexOf(c) >= 0) {
-                builder.append('\\');
-            }
-            builder.append(c);
-        }
-        builder.append('"');
-        return builder.toString();
-    }
-
-    @Override
-    protected void processAction(@NonNull Intent intent, @NonNull String action) {
-        if (Intent.ACTION_SEND.equals(action)) {
+open class RemoteInterface : RemoteActionActivity() {
+    override fun processAction(intent: Intent, action: String) {
+        if (Intent.ACTION_SEND == action) {
             /* "permission.RUN_SCRIPT" not required as this is merely opening a new window. */
-            processSendAction(intent);
-            return;
+            processSendAction(intent)
+            return
         }
         // Intent sender may not have permissions, ignore any extras
-        openNewWindow(null);
+        openNewWindow(null)
     }
 
-    private void processSendAction(@NonNull Intent intent) {
+    private fun processSendAction(intent: Intent) {
         if (intent.hasExtra(Intent.EXTRA_STREAM)) {
-            Object extraStream = intent.getExtras().get(Intent.EXTRA_STREAM);
-            if (extraStream instanceof Uri) {
-                Uri uri = (Uri) extraStream;
-                String scheme = uri.getScheme();
+            val extraStream = intent.extras!![Intent.EXTRA_STREAM]
+            if (extraStream is Uri) {
+                val uri = extraStream
+                val scheme = uri.scheme
                 if (TextUtils.isEmpty(scheme)) {
-                    openNewWindow(null);
-                    return;
+                    openNewWindow(null)
+                    return
                 }
-                switch (scheme) {
-                    case "file": {
-                        String path = uri.getPath();
-                        File file = new File(path);
-                        String dirPath = file.isDirectory() ? path : file.getParent();
-                        openNewWindow("cd " + quoteForBash(dirPath));
-                        return;
+                when (scheme) {
+                    "file" -> {
+                        val path = uri.path
+                        val file = File(path)
+                        val dirPath = if (file.isDirectory) path else file.parent
+                        openNewWindow("cd " + quoteForBash(dirPath))
+                        return
                     }
                 }
             }
         }
-        openNewWindow(null);
+        openNewWindow(null)
     }
 
-    protected String openNewWindow(String iInitialCommand) {
-        TermService service = getTermService();
-
-        try {
-            TermSession session = TermActivity.createTermSession(this, mSettings, iInitialCommand);
-
-            service.addSession(session);
-
-            String handle = UUID.randomUUID().toString();
-            ((GenericTermSession) session).setHandle(handle);
-
-            Intent intent = new Intent(this, TermActivity.class)
-                    .setAction(Application.ACTION_OPEN_NEW_WINDOW)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-
-            return handle;
-        } catch (IOException e) {
-            return null;
+    protected fun openNewWindow(iInitialCommand: String?): String? {
+        val service = termService!!
+        return try {
+            val session = TermActivity.createTermSession(this, mSettings, iInitialCommand)
+            service.addSession(session)
+            val handle = UUID.randomUUID().toString()
+            (session as GenericTermSession).handle = handle
+            val intent = Intent(this, TermActivity::class.java)
+                .setAction(Application.ACTION_OPEN_NEW_WINDOW)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            handle
+        } catch (e: IOException) {
+            null
         }
     }
 
-    protected String appendToWindow(String handle, String iInitialCommand) {
-        TermService service = getTermService();
+    protected fun appendToWindow(handle: String, iInitialCommand: String?): String? {
+        val service = termService!!
 
         // Find the target window
-        GenericTermSession target = null;
-        int index;
-        for (index = 0; index < service.getSessionCount(); ++index) {
-            GenericTermSession session = (GenericTermSession) service.getSession(index);
-            String h = session.getHandle();
-            if (h != null && h.equals(handle)) {
-                target = session;
-                break;
+        var target: GenericTermSession? = null
+        var index: Int
+        index = 0
+        while (index < service.sessionCount) {
+            val session = service.getSession(index) as GenericTermSession
+            val h = session.handle
+            if (h != null && h == handle) {
+                target = session
+                break
             }
+            ++index
         }
-
         if (target == null) {
             // Target window not found, open a new one
-            return openNewWindow(iInitialCommand);
+            return openNewWindow(iInitialCommand)
         }
-
         if (iInitialCommand != null) {
-            target.write(iInitialCommand);
-            target.write('\r');
+            target.write(iInitialCommand)
+            target.write('\r'.code)
         }
+        val intent = Intent(this, TermActivity::class.java)
+            .setAction(Application.ACTION_SWITCH_WINDOW)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            .putExtra(Application.ARGUMENT_TARGET_WINDOW, index)
+        startActivity(intent)
+        return handle
+    }
 
-        Intent intent = new Intent(this, TermActivity.class)
-                .setAction(Application.ACTION_SWITCH_WINDOW)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                .putExtra(Application.ARGUMENT_TARGET_WINDOW, index);
-        startActivity(intent);
-
-        return handle;
+    companion object {
+        /**
+         * Quote a string so it can be used as a parameter in bash and similar shells.
+         */
+        fun quoteForBash(s: String?): String {
+            val builder = StringBuilder()
+            val specialChars = "\"\\$`!"
+            builder.append('"')
+            val length = s!!.length
+            for (i in 0 until length) {
+                val c = s[i]
+                if (specialChars.indexOf(c) >= 0) {
+                    builder.append('\\')
+                }
+                builder.append(c)
+            }
+            builder.append('"')
+            return builder.toString()
+        }
     }
 }

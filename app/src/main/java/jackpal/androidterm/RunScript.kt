@@ -1,14 +1,11 @@
-package jackpal.androidterm;
+package jackpal.androidterm
 
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Log;
-
-import com.Application;
-
-import androidx.annotation.NonNull;
-
+import jackpal.androidterm.RemoteInterface
+import android.content.Intent
+import android.text.TextUtils
+import android.util.Log
+import com.Application
+import java.util.*
 
 /*
  * New procedure for launching a command in ATE.
@@ -17,46 +14,40 @@ import androidx.annotation.NonNull;
  *
  * The old procedure of using Intent.Extra is still available but is discouraged.
  */
-public final class RunScript extends RemoteInterface {
-
-    @Override
-    protected void processAction(@NonNull Intent intent, @NonNull String action) {
-        switch (action) {
-            case Application.ACTION_RUN_SCRIPT:
-                /* Someone with the appropriate permissions has asked us to run a script */
-                runScript(intent);
-                break;
+class RunScript : RemoteInterface() {
+    override fun processAction(intent: Intent, action: String) {
+        when (action) {
+            Application.ACTION_RUN_SCRIPT ->                 /* Someone with the appropriate permissions has asked us to run a script */runScript(
+                intent
+            )
         }
     }
 
-    private void runScript(@NonNull Intent intent) {
-        String command = null;
+    private fun runScript(intent: Intent) {
+        var command: String? = null
 
         // First look in Intent URI (data) for the path; if not there, revert to
         // the "shell command" location.
-        Uri uri = intent.getData();
+        val uri = intent.data
         if (uri != null) {
-            String s = uri.getScheme();
-            if (s != null) s = s.toLowerCase();
+            var s = uri.scheme
+            if (s != null) s = s.lowercase(Locale.getDefault())
             if (s != null) {
-                switch (s) {
-                    case "file":
-                        command = uri.getPath();
-                        if (TextUtils.isEmpty(command)) break;
-
-                        command = quoteForBash(command);
+                when (s) {
+                    "file" -> {
+                        command = uri.path
+                        if (TextUtils.isEmpty(command))
+                        command = quoteForBash(command)
 
                         // consider scheme fragment as command arguments
-                        s = uri.getFragment();
-                        if (s != null)
-                            command += " " + s;
-                        break;
-                    // TODO "context" scheme
+                        s = uri.fragment
+                        if (s != null) command += " $s"
+                    }
                 }
             }
         }
         if (command == null) {
-            command = intent.getStringExtra(Application.ARGUMENT_SHELL_COMMAND);
+            command = intent.getStringExtra(Application.ARGUMENT_SHELL_COMMAND)
             /* TODO: use of quoteForBash()
                Call of quoteForBash() was added by commit
                "rewrite processing on RunScript similarly to RunShortcut"
@@ -65,23 +56,18 @@ public final class RunScript extends RemoteInterface {
                 command = quoteForBash(command);
             */
         }
-
         if (command == null) {
-            Log.e(Application.APP_TAG, "No command provided in script!");
-            return;
+            Log.e(Application.APP_TAG, "No command provided in script!")
+            return
         }
-
-        String handle = intent.getStringExtra(Application.ARGUMENT_WINDOW_HANDLE);
-        if (handle != null) {
+        var handle = intent.getStringExtra(Application.ARGUMENT_WINDOW_HANDLE)
+        handle = handle?.let {
             // Target the request at an existing window if open
-            handle = appendToWindow(handle, command);
-        } else {
-            // Open a new window
-            handle = openNewWindow(command);
-        }
-
-        Intent result = new Intent();
-        result.putExtra(Application.ARGUMENT_WINDOW_HANDLE, handle);
-        setResult(RESULT_OK, result);
+            appendToWindow(it, command)
+        } ?: // Open a new window
+                openNewWindow(command)
+        val result = Intent()
+        result.putExtra(Application.ARGUMENT_WINDOW_HANDLE, handle)
+        setResult(RESULT_OK, result)
     }
 }

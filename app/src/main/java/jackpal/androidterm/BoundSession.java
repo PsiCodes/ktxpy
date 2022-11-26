@@ -33,7 +33,7 @@ class BoundSession extends GenericTermSession {
     }
 
     @Override
-    boolean isFailFast() {
+    public boolean isFailFast() {
         return !fullyInitialized;
     }
 }
