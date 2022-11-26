@@ -11,7 +11,7 @@
 
 
 ## Overview
-This project is develop for running python3.11 i.e latest version of android on python,it also comes with material3 ui.
+This Project is Developed for running Python3.11 i.e latest version of android on python,it also comes with Material3 Ui.
 ## Todo
 1. Add Support For Various libraries like Matplotlib,Numpy & Beautiful soup etc;
 2. Proper Code Recommendation;
