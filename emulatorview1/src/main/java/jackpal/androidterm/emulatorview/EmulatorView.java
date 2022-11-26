@@ -32,7 +32,7 @@ import java.util.Hashtable;
 
 import androidx.annotation.RequiresApi;
 
-import com.termoneplus.utils.SimpleClipboardManager;
+import com.termoneplus.utils.*;
 
 import jackpal.androidterm.emulatorview.compat.KeycodeConstants;
 import jackpal.androidterm.emulatorview.compat.Patterns;

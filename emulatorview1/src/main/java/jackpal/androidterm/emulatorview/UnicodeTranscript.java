@@ -3,7 +3,7 @@ package jackpal.androidterm.emulatorview;
 import android.os.Build;
 import android.util.Log;
 
-import com.termoneplus.compat.CharacterCompat;
+import com.termoneplus.compat.*;
 
 import java.util.Arrays;
 

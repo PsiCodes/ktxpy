@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
-import com.termoneplus.compat.CharacterCompat;
+import com.termoneplus.compat.*;
 
 import java.io.IOException;
 import java.io.InputStream;
