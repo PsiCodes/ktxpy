@@ -34,6 +34,8 @@ I would absolutely love every possible kind of contributions. If you
 have a questions, ideas, need help or want to propose a change just open
 an issue. Pull request are greatly appreciated.
 
+##Special Thanks
+Special Thanks To Rosmoe for awesome editor,Roumen Petrov for termoneplus & hzy3774 for un7zip
 
 ## GNU GPL 3.0 Licence
 
