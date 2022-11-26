@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2022-2023  PsiCodes
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".Activities.EditorActivity">
+
+    <LinearLayout
+        android:id="@+id/search_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="gotoLast"
+                    android:text="@string/layout_tv_last" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="gotoNext"
+                    android:text="@string/layout_tv_next" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="replace"
+                    android:text="@string/layout_tv_replace" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="replaceAll"
+                    android:text="@string/layout_tv_replaceAll" />
+
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+        <EditText
+            android:id="@+id/search_editor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/text_to_search" />
+
+        <EditText
+            android:id="@+id/replace_editor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/replacement" />
+
+    </LinearLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/ic_baseline_play_arrow_24"
+            android:contentDescription="Run"
+            android:layout_marginBottom="70dp"
+            android:layout_marginRight="16dp"
+            />
+        <io.github.rosemoe.sora.widget.CodeEditor
+            android:id="@+id/editor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="56dp"
+            android:scrollbarThumbHorizontal="@drawable/scrollbar_thumb"
+            android:scrollbarThumbVertical="@drawable/scrollbar_thumb"
+            android:scrollbarTrackHorizontal="@drawable/scrollbar_track"
+            android:scrollbarTrackVertical="@drawable/scrollbar_track"
+            app:lnPanelPosition="center"
+            app:lnPanelPositionMode="follow" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="-56dp"
+            android:orientation="vertical"
+            android:background="#000000"
+            android:layout_gravity="bottom"
+            >
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <io.github.rosemoe.sora.widget.SymbolInputView
+                    android:id="@+id/symbol_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/position_display"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="2sp" />
+
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

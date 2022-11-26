@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 33
+    defaultConfig {
+        minSdkVersion 26
+        targetSdkVersion 33
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/CMakeLists.txt"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    productFlavors {
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    ndkVersion '23.1.7779620'
+}
+
+// by default recent plugin version does not copy any AIDL files "to avoid publishing too much"
+android.libraryVariants.all { variant ->
+    Sync packageAidl = project.tasks.create("addPublic${variant.name.capitalize()}Aidl", Sync) { sync ->
+        from "$project.projectDir/src/main/aidl/"
+        into "$buildDir/intermediates/bundles/${variant.dirName}/aidl/"
+    }
+
+    Task javaCompileTask
+    if (variant.hasProperty('javaCompileProvider')) {
+        // gradle plugin 3.3.+
+        javaCompileTask = variant.javaCompileProvider.get()
+    } else {
+        javaCompileTask = variant.javaCompile
+    }
+    javaCompileTask.dependsOn packageAidl
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation "androidx.annotation:annotation:1.5.0"
+}

@@ -1,0 +1,491 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~    sora-editor - the awesome code editor for Android
+  ~    https://github.com/Rosemoe/sora-editor
+  ~    Copyright (C) 2020-2022  Rosemoe
+  ~
+  ~     This library is free software; you can redistribute it and/or
+  ~     modify it under the terms of the GNU Lesser General Public
+  ~     License as published by the Free Software Foundation; either
+  ~     version 2.1 of the License, or (at your option) any later version.
+  ~
+  ~     This library is distributed in the hope that it will be useful,
+  ~     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  ~     Lesser General Public License for more details.
+  ~
+  ~     You should have received a copy of the GNU Lesser General Public
+  ~     License along with this library; if not, write to the Free Software
+  ~     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
+  ~     USA
+  ~
+  ~     Please contact Rosemoe by email 2073412493@qq.com if you need
+  ~     additional information or have any questions
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">KtxPy</string>
+    <string name="open_debug_logs">Open Debug Logs</string>
+    <string name="layout_tv_last">Last</string>
+    <string name="layout_tv_next">Next</string>
+    <string name="layout_tv_replace">Replace</string>
+    <string name="layout_tv_replaceAll">Replace All</string>
+    <string name="text_to_search">Text to search</string>
+    <string name="replacement">Replacement</string>
+    <string name="cursor_actions">Cursor Actions</string>
+    <string name="go_to_end">Go To End</string>
+    <string name="move_up">Move Up</string>
+    <string name="move_down">Move Down</string>
+    <string name="move_left">Move Left</string>
+    <string name="move_right">Move Right</string>
+    <string name="home">Home</string>
+    <string name="end">End</string>
+    <string name="text_actions">Text Actions</string>
+    <string name="switch_color_scheme">Switch Color Scheme</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="search_text">Search Text</string>
+    <string name="action_mode">Action Mode</string>
+    <string name="search_panel">Search Panel</string>
+    <string name="code_navigation">Code Navigation</string>
+    <string name="switch_language">Switch Language</string>
+    <string name="format">Format</string>
+    <string name="code_navi">Code Navigation</string>
+    <string name="navi_err_msg">Code navigation not prepared or unsupported</string>
+    <string name="color_scheme">Color Scheme</string>
+    <string name="err_crash_loop">"Exception in a thread with looper. Crash log is saved to crash-journal.log in private files directory. "</string>
+    <string name="wordwrap">Wordwrap</string>
+    <string name="show_crash_log">Open crash log</string>
+    <string name="clear_crash_log">Clear crash log</string>
+    <string name="line_number_visibility">Show line number</string>
+    <string name="pin_line_number">Pin LineNumber</string>
+    <string name="feature_switches">Feature Switches</string>
+    <string name="magnifier">Magnifier</string>
+    <string name="use_icu_library">Use ICU library</string>
+    <string name="open_new_activity">Open new activity</string>
+    <string name="open_lsp_activity">Open lsp activity</string>
+    <string name="not_supported">Not supported</string>
+    <string name="dialog_api_warning_msg">LSP works only on Android O or above</string>
+    <string name="line_info_panel_position">Line Info Panel Position</string>
+    <string name="fixed">Fixed</string>
+    <string name="follow_scrollbar">Follow scrollbar</string>
+    <string name="top">Top</string>
+    <string name="bottom">Bottom</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="center">Center</string>
+    <string name="top_left">Top left</string>
+    <string name="top_right">Top right</string>
+    <string name="bottom_left">Bottom left</string>
+    <string name="bottom_right">Bottom right</string>
+    <string name="updating_caption">Installation</string>
+    <string name="removing_caption">Uninstallation</string>
+    <string name="establishing_handshake_message">Establishing handshake.\nPlease wait</string>
+    <string name="wait_message">Please wait...</string>
+    <string name="download_cctools">Downloading native tools</string>
+    <string name="received">Received\u0020</string>
+    <string name="from">\u0020from\u0020</string>
+    <string name="bytes">\u0020bytes</string>
+    <string name="download_file">Download</string>
+    <string name="unpacking_file">Unpacking</string>
+    <string name="error_downloading">Error downloading file, restart package manager and reinstall package</string>
+    <string name="bad_archive">Bad or corrupted package file, restart package manager and reinstall package</string>
+    <string name="sd_no_memory">No free space on SD card, need\u0020</string>
+    <string name="sd_no_memory2">. Remove unnecessary files and install package again</string>
+    <string name="cache_no_memory">No free space, need\u0020</string>
+    <string name="cache_no_memory1">, but\u0020</string>
+    <string name="cache_no_memory2">\u0020available. Remove unnecessary android applications and install package again</string>
+
+    <string name="toolchain_selector">Quick install</string>
+    <string name="toolchain_selectormsg">Select toolchains for quick installation. Later you can install other additional packages from Add-ons.</string>
+
+    <string name="exit_dialog">Confirm exit</string>
+    <string name="exit_dialog_text">Text has been modified, but not saved. Are you sure you want to exit?</string>
+    <string name="exit_dialog_yes">Yes</string>
+    <string name="exit_dialog_no">No</string>
+
+    <string name="save_warn_dialog">Warning!</string>
+    <string name="save_warn_text">Text has been modified, but not saved. Continue?</string>
+
+    <string name="about_dialog">CCTools IDE</string>
+    <string name="about_dialog_text">C/C++ on-board development tools\nVersion</string>
+    <string name="about_dialog_text2">\nCopyright &#169; 2012-2013, Alexander Chukov</string>
+    <string name="about_dialog_show">Home page</string>
+
+    <string name="about_button">About</string>
+    <string name="prefs_button">Settings</string>
+
+    <string name="pref_updater">Check for available updates at startup</string>
+    <string name="pref_toolbar">Toolbar</string>
+    <string name="pref_syntax">Syntax highlighting</string>
+    <string name="pref_linenumbers">Line numbers</string>
+    <string name="pref_fontsize">Font size</string>
+    <string name="pref_dialog_fontsize">Font size</string>
+    <string name="pref_console_fontsize">Console font size</string>
+    <string name="pref_force_run">Quick run</string>
+    <string name="pref_cc_opts">C options (CFLAGS)</string>
+    <string name="pref_cxx_opts">C++ options (CXXFLAGS)</string>
+    <string name="pref_runargs">Execute without args</string>
+    <string name="pref_codeeditor">Code editor</string>
+    <string name="pref_autopair">Autopair</string>
+    <string name="pref_autoindent">Autoindent</string>
+
+    <string name="exit_button">Quit</string>
+    <string name="selectFileOrFolder">Select file or folder</string>
+    <string name="pathButton">Open</string>
+    <string name="unsupported_device">This device is not supported yet</string>
+    <string name="filebrowser_name">Filebrowser</string>
+    <string name="newButton">New</string>
+    <string name="closeButton">Close</string>
+    <string name="saveButton">Save</string>
+    <string name="saveAsButton">Save as</string>
+    <string name="buildButton">Build</string>
+    <string name="playButton">Run</string>
+    <string name="logButton">Build log</string>
+    <string name="title_menu_terminal">Terminal</string>
+    <string name="imgbuttdesc"></string>
+    <string name="menu_goto">Goto</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_undo">Undo</string>
+    <string name="menu_redo">Redo</string>
+
+    <string name="goto_line">Line</string>
+    <string name="search_string">Search string</string>
+
+    <string name="projectButton">Project</string>
+    <string name="project_new">New</string>
+    <string name="project_open">Open</string>
+    <string name="project_close">Close</string>
+    <string name="project_import">Import</string>
+    <string name="project_properties">Properties</string>
+
+    <string name="project_new_project">New project</string>
+    <string name="project_new_project_message">Select project type</string>
+
+    <string name="buildwindow_name">Build</string>
+    <string name="buildwindow_name_error">Failed</string>
+    <string name="buildwindow_name_done">Finished</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="make_title">Make utility</string>
+    <string name="make_args">Enter parameters</string>
+    <string name="gcc_title">Compile source file</string>
+    <string name="gcc_args">Enter arguments</string>
+    <string name="gccbuildexe">Build executable</string>
+    <string name="gccrunexe">Run</string>
+    <string name="gccnativeactivity">Native Activity</string>
+    <string name="unknown_filetype">Unknown file type - nothing to do</string>
+    <string name="known_filetypes">Supported following types of files: .c .cpp .c++ .s .mk .mak Makefile makefile</string>
+    <string name="build_done">Done</string>
+    <string name="build_finished">Finished</string>
+    <string name="build_error">Error code </string>
+    <string name="exe_dialog">Execute file</string>
+    <string name="exe_args">Command line arguments</string>
+
+    <string name="log_empty">Empty log</string>
+
+    <string name="console_name">Terminal</string>
+    <string name="console_executing">Running</string>
+    <string name="console_finished">Finished</string>
+    <string name="console_stopped">Terminated</string>
+
+    <string name="new_file">New file</string>
+    <string name="file_loaded">File successfully downloaded</string>
+    <string name="file_not_loaded">Can not read file</string>
+    <string name="file_saved">File successfully saved</string>
+    <string name="file_not_saved">Can not write file</string>
+
+    <string name="open_file">Open file</string>
+    <string name="save_file">Save file</string>
+    <string name="select_folder">Select folder</string>
+    <string name="location">Location</string>
+    <string name="cant_read_folder">folder can\'t be read!</string>
+    <string name="nnew">New</string>
+    <string name="select">Select</string>
+    <string name="file_name">File name:</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Save</string>
+    <string name="no_data">No Data</string>
+    <color name="gray">#ffff0000</color>
+    <string name="err">Error</string>
+    <string name="newDirectory">New folder</string>
+    <string name="create_new">Create:</string>
+    <string name="cannot_create">Cannot create!</string>
+    <string name="homeDirectory">Home directory</string>
+    <string name="sdDirectory">SD card</string>
+
+    <string name="file_copy">Copy</string>
+    <string name="file_cut">Cut</string>
+    <string name="file_paste">Paste</string>
+    <string name="file_delete">Delete</string>
+
+    <string name="message_file_copy">Copying</string>
+    <string name="message_file_move">Moving</string>
+    <string name="message_file_delete">Deleting</string>
+
+    <string name="title_menu_add_ons">Add-ons</string>
+    <string name="pkgmgr_name">Add-ons manager</string>
+    <string name="pkginstaller_name">Add/Remove add-ons</string>
+
+    <string name="title_repo_update">Remote repository</string>
+    <string name="message_package_downloading">Downloading list of packages…</string>
+    <string name="message_package_repo_unavailable">Remote repository is unavailable at the moment. Please try again later.</string>
+    <string name="message_package_for_install">Use Addons manager to install package:\u0020</string>
+    <string name="pkg_prepareinstalltask">Package list processing</string>
+    <string name="pkg_prepareinstall">Checking the package dependencies…</string>
+    <string name="pkg_installpackagetask">Installing package</string>
+    <string name="pkg_installpackage">Installing package</string>
+    <string name="title_package_uninstall">Uninstalling package</string>
+    <string name="message_package_uninstall">Uninstalling package</string>
+    <string name="pkg_checkupdates">Checking for updates…</string>
+
+    <string name="pkg_name">Name</string>
+    <string name="pkg_version">Version:\u0020</string>
+    <string name="pkg_description">Description</string>
+    <string name="pkg_deps">Depends:\u0020</string>
+    <string name="pkg_file">File:\u0020</string>
+    <string name="pkg_filesize"> File size:\u0020</string>
+    <string name="pkg_size"> Installed size:\u0020</string>
+
+    <string name="pkg_selected">Selected\u0020</string>
+    <string name="pkg_selected1">Packages to install:\u0020</string>
+    <string name="pkg_selected2">Download size:\u0020</string>
+    <string name="pkg_selected3">Installed size:\u0020</string>
+    <string name="pkg_selectedforupdate">Updating packages</string>
+    <string name="pkg_selectedforupdate1">Packages to update:\u0020</string>
+    <string name="pkg_alreadyinstalled">This package already installed</string>
+    <string name="pkg_install">Install</string>
+    <string name="pkg_reinstall">Reinstall</string>
+    <string name="pkg_uninstall">Uninstall</string>
+    <string name="pkg_status">Status: \u0020</string>
+    <string name="pkg_installed">Installed</string>
+    <string name="pkg_notinstalled">Not installed</string>
+    <string name="pkg_searchHint">Search package</string>
+
+    <string name="title_repo_list">Repos list</string>
+    <string name="pkgUpdateButton">Check updates</string>
+
+    <string name="whatisnew">What\'s new</string>
+        <string name="application_terminal">Terminal Emulator</string>
+        <string name="preferences">Preferences</string>
+        <string name="new_window">New window</string>
+        <string name="close_window">Close window</string>
+        <string name="window_list">Windows</string>
+        <string name="prev_window">Prev window</string>
+    <string name="summary_actionbar_preference_compat">Choose the action bar\'s behavior.</string>
+    <string name="restart_statusbar_change">Restarting activity ...\n(new status-bar mode)</string>
+    <string name="permdesc_grp_term">Used to access Terminal Emulator features.</string>
+    <string name="perm_grp_term">Terminal Emulator permissions</string>
+    <string name="next_window">Next window</string>
+        <string name="reset">Reset term</string>
+        <string name="send_email">Email to</string>
+        <string name="special_keys">Special keys</string>
+        <string name="toggle_soft_keyboard">Toggle soft keyboard</string>
+
+        <string name="reset_toast_notification">This window\'s terminal state has been reset.</string>
+
+        <string name="enable_wakelock">Take WakeLock</string>
+        <string name="disable_wakelock">Drop WakeLock</string>
+        <string name="enable_wifilock">Take WifiLock</string>
+        <string name="disable_wifilock">Drop WifiLock</string>
+
+        <string name="edit_text">Edit text</string>
+        <string name="select_text">Select text</string>
+        <string name="copy_all">Copy all</string>
+        <string name="paste">Paste</string>
+        <string name="send_control_key">Send control key</string>
+        <string name="send_fn_key">Send fn key</string>
+
+        <string name="window_title">Window %1$d</string>
+
+        <string name="service_notify_text">Terminal session is running</string>
+
+        <string name="process_exit_message">Terminal session finished</string>
+
+        <!-- Preference dialog -->
+        <string name="screen_preferences">Screen</string>
+
+        <string name="title_statusbar_preference">Status bar</string>
+        <string name="summary_statusbar_preference">Show/hide status bar.</string>
+        <string name="dialog_title_statusbar_preference">Status bar</string>
+
+        <string name="title_actionbar_preference">Action bar</string>
+        <string name="summary_actionbar_preference">Choose the action bar\'s behavior (Android 3.0 and up).</string>
+        <string name="dialog_title_actionbar_preference">Action bar behavior</string>
+
+        <string name="title_orientation_preference">Screen orientation</string>
+        <string name="summary_orientation_preference">Choose the screen orientation behavior.</string>
+        <string name="dialog_title_orientation_preference">Screen orientation behavior</string>
+
+        <string name="title_cursorstyle_preference">Cursor style</string>
+        <string name="summary_cursorstyle_preference">Choose cursor style.</string>
+        <string name="dialog_title_cursorstyle_preference">Cursor style</string>
+
+        <string name="title_cursorblink_preference">Cursor blink</string>
+        <string name="summary_cursorblink_preference">Choose cursor blink.</string>
+        <string name="dialog_title_cursorblink_preference">Cursor blink</string>
+
+        <string name="text_preferences">Text</string>
+
+        <string name="title_utf8_by_default_preference">Default to UTF-8</string>
+        <string name="summary_utf8_by_default_preference">Whether UTF-8 mode is enabled by default.</string>
+
+        <string name="title_fontsize_preference">Font size</string>
+        <string name="summary_fontsize_preference">Choose character height in points.</string>
+        <string name="dialog_title_fontsize_preference">Font size</string>
+
+        <string name="title_color_preference">Colors</string>
+        <string name="summary_color_preference">Choose text color.</string>
+        <string name="dialog_title_color_preference">Text color</string>
+
+        <string name="keyboard_preferences">Keyboard</string>
+
+        <string name="title_backaction_preference">Back button behavior</string>
+        <string name="summary_backaction_preference">Choose what pressing the back button does.</string>
+        <string name="dialog_title_backaction_preference">Back button behavior</string>
+
+        <string name="title_controlkey_preference">Control key</string>
+        <string name="summary_controlkey_preference">Choose control key.</string>
+        <string name="dialog_title_controlkey_preference">Control key</string>
+
+        <string name="title_fnkey_preference">Fn key</string>
+        <string name="summary_fnkey_preference">Choose Fn key.</string>
+        <string name="dialog_title_fnkey_preference">Fn key</string>
+
+        <string name="title_ime_preference">Input method</string>
+        <string name="summary_ime_preference">Choose input method for soft keyboard.</string>
+        <string name="dialog_title_ime_preference">Input method</string>
+
+        <string name="shell_preferences">Shell</string>
+        <string name="title_shell_preference">Command line</string>
+        <string name="summary_shell_preference">Specify the shell command line.</string>
+        <string name="dialog_title_shell_preference">Shell</string>
+
+        <string name="title_initialcommand_preference">Initial command</string>
+        <string name="summary_initialcommand_preference">Sent to the shell when it starts.</string>
+        <string name="dialog_title_initialcommand_preference">Initial Command</string>
+
+        <string name="title_termtype_preference">Terminal type</string>
+        <string name="summary_termtype_preference">What terminal type to report to the shell.</string>
+        <string name="dialog_title_termtype_preference">Terminal type</string>
+
+        <string name="title_close_window_on_process_exit_preference">Close window on exit</string>
+        <string name="summary_close_window_on_process_exit_preference">Whether a window should close when its shell exits.</string>
+
+        <string name="title_verify_path_preference">Verify PATH entries</string>
+        <string name="summary_verify_path_preference">Whether inaccessible directories should be removed from the PATH.</string>
+
+        <string name="title_do_path_extensions_preference">Allow PATH extensions</string>
+        <string name="summary_do_path_extensions_preference">Whether other apps should be allowed to provide additional commands (add to PATH).</string>
+
+        <string name="title_allow_prepend_path_preference">Allow PATH prepend</string>
+        <string name="summary_allow_prepend_path_preference">Whether other apps should be allowed to override existing commands (add to the beginning of PATH).</string>
+
+        <string name="title_home_path_preference">HOME folder</string>
+        <string name="summary_home_path_preference">Path to a writable folder to be used as HOME.</string>
+
+        <string name="control_key_dialog_title">Control and Function Keys</string>
+        <!-- The word CTRLKEY should be left un-translated. It will be replaced at run-time with the
+             actual control key key name. -->
+        <string name="control_key_dialog_control_text">CTRLKEY Space : Control-@ (NUL)\nCTRLKEY A..Z : Control-A..Z\nCTRLKEY 5 : Control-]\nCTRLKEY 6 : Control-^\nCTRLKEY 7 : Control-_\nCTRLKEY 9 : F11\nCTRLKEY 0 : F12</string>
+        <string name="control_key_dialog_control_disabled_text">No control key set.</string>
+        <!-- The word FNKEY should be left un-translated. It will be replaced at run-time with the
+             actual function key key name. -->
+        <string name="control_key_dialog_fn_text">FNKEY 1..9 : F1-F9\nFNKEY 0 : F10\nFNKEY W : Up\nFNKEY A : Left\nFNKEY S : Down\nFNKEY D : Right\nFNKEY P : PageUp\nFNKEY N : PageDown\nFNKEY T : Tab\nFNKEY L : | (pipe)\nFNKEY U : _ (underscore)\nFNKEY E : Control-[ (ESC)\nFNKEY X : Delete\nFNKEY I : Insert\nFNKEY H : Home\nFNKEY F : End\nFNKEY . : Control-\\\n</string>
+        <string name="control_key_dialog_fn_disabled_text">No function key set.</string>
+
+        <string name="confirm_window_close_message">Close this window?</string>
+
+        <string name="perm_run_script">Run arbitrary commands in Terminal Emulator</string>
+        <string name="permdesc_run_script">Allows application to open new windows in Terminal Emulator for Android and run commands in those windows with all of Terminal Emulator for Android\'s permissions, including access to the Internet and your SD Card.</string>
+        <string name="perm_append_to_path">Add commands to Terminal Emulator</string>
+        <string name="permdesc_append_to_path">Allows application to provide additional commands (add directories to the PATH) for Terminal Emulator for Android.</string>
+        <string name="perm_prepend_to_path">Override commands in Terminal Emulator</string>
+        <string name="permdesc_prepend_to_path">Allows application to override existing commands with its own versions (prepend directories to the PATH) in Terminal Emulator for Android.</string>
+
+        <string name="email_transcript_subject">Transcript from Terminal Emulator for Android</string>
+        <string name="email_transcript_chooser_title">Mail transcript using:</string>
+        <string name="key_home_path_preference" translatable="false">home_path</string>
+        <string name="email_transcript_no_email_activity_found">Could not choose an email activity to send transcript.</string>
+        <string name="alt_sends_esc">Alt key sends ESC</string>
+        <string name="alt_sends_esc_summary_on">Alt key sends ESC.</string>
+        <string name="alt_sends_esc_summary_off">Alt key does not send ESC.</string>
+    <string name="summary_shellrc_preference">Shell startup commands.</string>
+    <string name="dialog_title_shellrc_preference">Shell startup</string>
+    <string name="restart_actionbar_change">Restarting activity ...\n(new action-bar mode)</string>
+
+    <string name="key_source_sys_shrc_preference" translatable="false">source_sys_shrc</string>
+    <string name="title_source_sys_shrc_preference">Source system mkshrc</string>
+    <string name="summary_source_sys_shrc_preference">
+        In application specific shell statup script source commands from system shell startup file (/system/etc/mkshrc).
+        Depends from shell command line.
+    </string>
+    <string name="hint_shellrc_preference">(shell startup commands)</string>
+    <string name="ignore_battery_optimizations">Allow \"%1$s\" to ignore battery optimizations?</string>
+
+    <string name="title_mouse_tracking_preference">Send mouse events</string>
+        <string name="summary_mouse_tracking_preference">Whether tap and scroll events should be sent as escape sequences to the terminal.</string>
+
+        <string name="title_use_keyboard_shortcuts">Use Keyboard Shortcuts</string>
+        <string name="use_keyboard_shortcuts_summary_on">Ctrl-Tab: cycle window, Ctrl-Shift-N: new window, Ctrl-Shift-V: paste.</string>
+        <string name="use_keyboard_shortcuts_summary_off">Keyboard shortcuts disabled.</string>
+    <string name="title_thememode_preference">Theme Mode</string>
+    <string name="summary_thememode_preference">Change Theme mode.</string>
+
+    <string name="title_sizecalc_preference">Size calculation</string>
+    <string name="summary_sizecalc_preference">When to calculate terminal screen size as work-aroud for old devices or some soft keyboard.</string>
+    <string name="dialog_title_sizecalc_preference">Size calculation method</string>
+
+    <string name="dialog_title_thememode_preference">Theme Mode</string>
+    <string name="restart_thememode_change">Restarting activity ...\n(new theme mode)</string>
+    <string name="application_site" translatable="false">none</string>
+    <string name="application_email" translatable="false">Maintaier=@PsiCodes aka Pranjal</string>
+
+    <string name="key_shellrc_preference" translatable="false">shrc</string>
+    <string name="title_shellrc_preference">Shell startup</string>
+
+    <string name="help">Help</string>
+        <string name="help_url" translatable="false">http://jackpal.github.com/Android-Terminal-Emulator/help/index.html</string>
+        <string name="activity_term_here_title">Term here</string>
+        <!-- BEGIN SHORTCUT RELATED STRINGS -->
+        <!-- AndroidManifest.xml -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="message_external_storage_rationale">Access to \"External Storage\" is required to manage its files</string>
+    <string name="message_external_storage_granted">Granted access to \"External Storage\"</string>
+    <string name="message_external_storage_not_granted">Denied access to \"External Storage\"</string>
+
+    <string name="script_intent_title">Select Script</string>
+    <string name="script_import_error">Cannot read selected script</string>
+    <string name="script_access_error">Cannot access selected script</string>
+    <string name="script_source_content_error">No activity found to handle action \"Get Content\"</string>
+    <string name="activity_shortcut_create">"Term shortcut"</string>
+        <!-- FSNavigator.java -->
+        <string name="fsnavigator_title">FILE SELECTOR</string>
+        <string name="fsnavigator_no_external_storage">External storage not available</string>
+        <string name="fsnavigator_optional_enter_path">Or enter path here.</string>
+        <string name="fsnavigator_change_theme">Change theme</string>
+        <!-- AddShortcut.java -->
+        <string name="addshortcut_command_hint">command</string>
+        <string name="addshortcut_example_hint">--example=\""a\"</string>
+        <string name="addshortcut_button_find_command">Find command</string>
+        <string name="addshortcut_navigator_title">SELECT SHORTCUT TARGET</string>
+        <string name="addshortcut_command_window_instructions">Command window requires full path, no arguments. For other commands use Arguments window (ex: cd /sdcard).</string>
+        <string name="addshortcut_arguments_label">Arguments\:</string>
+        <string name="addshortcut_shortcut_label">Shortcut label\:</string>
+        <string name="addshortcut_button_text_icon">Text icon</string>
+        <string name="addshortcut_make_text_icon">MAKE TEXT ICON</string>
+        <string name="addshortcut_text_icon_instructions"></string>
+        <string name="addshortcut_title">Term shortcut</string>
+        <!-- ColorValue.java -->
+        <string name="colorvalue_letter_alpha">α</string>
+        <string name="colorvalue_letter_red">R</string>
+        <string name="colorvalue_letter_green">G</string>
+        <string name="colorvalue_letter_blue">B</string>
+        <string name="colorvalue_label_lock_button_column">LOCK</string>
+        <string name="colorvalue_icon_text_entry_hint">Enter icon text</string>
+        <!-- END SHORTCUT RELATED STRINGS -->
+                <!-- Commands -->
+</resources>

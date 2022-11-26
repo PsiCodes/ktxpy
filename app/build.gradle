@@ -1,0 +1,133 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp' version '1.7.20-1.0.8'
+}
+
+android {
+    namespace 'com.wildzeus.pythonktx'
+    compileSdk 33
+    ndkVersion '23.1.7779620'
+    defaultConfig {
+        applicationId "com.wildzeus.pythonktx"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        android.packagingOptions.jniLibs.useLegacyPackaging true
+        externalNativeBuild {
+            cmake {
+                arguments "-DAPPLICATION_ID:STRING=${applicationId}"
+            }
+            }
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+            vectorDrawables {
+                useSupportLibrary true
+            }
+    }
+        externalNativeBuild {
+             cmake {
+                 path "src/CMakeLists.txt"
+                 version '3.22.1'
+             }
+        }
+    flavorDimensions "cpuArch"
+    productFlavors {
+        arch_arm64 {
+            dimension 'cpuArch'
+            versionCode 2*1000+1
+            versionNameSuffix "-arm64"
+        }
+        arch_x86_64 {
+            dimension 'cpuArch'
+            versionCode 1*1000+1
+            versionNameSuffix "-x86"
+        }
+    }
+        buildFeatures.viewBinding = true
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_11
+            targetCompatibility JavaVersion.VERSION_11
+        }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.3.2'
+    }
+    kotlin {
+        sourceSets {
+            debug{
+                kotlin.srcDir("build/generated/ksp/debug/kotlin")
+            }
+            release{
+                kotlin.srcDir("build/generated/ksp/release/kotlin")
+            }
+        }
+    }
+        kotlinOptions {
+            jvmTarget = "11"
+            freeCompilerArgs += [
+                    "-Xjvm-default=all"
+            ]
+        }
+        buildFeatures {
+            compose true
+        }
+        composeOptions {
+            kotlinCompilerExtensionVersion '1.3.2'
+        }
+    sourceSets {
+        arch_x86_64 {
+            sourceSets {
+                assets.srcDirs = ["arch_x86_64/assets"]
+            }
+        }
+        arch_arm64{
+            sourceSets {
+                assets.srcDirs = ["arch_arm64-v8a/assets"]
+            }
+        }
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.*'])
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation project(":libtermexec1")
+    implementation project(":emulatorview1")
+    implementation project(path: ':un7zip')
+    def compose_version="1.3.0 "
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'androidx.activity:activity-compose:1.6.1'
+    implementation "androidx.compose.ui:ui:1.3.0"
+    testImplementation 'junit:junit:4.13.2'
+    implementation(platform('io.github.Rosemoe.sora-editor:bom:0.18.1'))
+    // implementation "androidx.preference.PreferenceFragmentCompat"
+    implementation 'io.github.Rosemoe.sora-editor:language-python:0.8.4'
+    implementation('io.github.Rosemoe.sora-editor:editor-lsp:0.18.1')
+    implementation group: 'org.tukaani', name: 'xz', version: '1.9'
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    implementation 'io.github.Rosemoe.sora-editor:editor'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    implementation 'io.github.raamcosta.compose-destinations:animations-core:1.7.26-beta'
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.7.26-beta'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'org.apache.commons:commons-compress:1.22'
+    implementation ("androidx.preference:preference:1.2.0") {
+    implementation("io.github.Rosemoe.sora-editor:language-textmate")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation "androidx.compose.ui:ui-tooling-preview:1.3.0"
+    implementation 'androidx.compose.material3:material3:1.1.0-alpha01'
+        // work-around for duplicate class and appcompat 1.5.*
+        exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel'
+        exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel-ktx'
+    }
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.3.0"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:1.3.0"
+}
