@@ -100,16 +100,17 @@ class WelcomeActivity: ComponentActivity() {
                 isFileExtracting.value = false
             } else {
                 Z7Extractor.extractAsset(assets,
-                    "build.7z", filesDir.path,
-                    object : IExtractCallback {
+                    "build.7z", filesDir.path,object : IExtractCallback{
                         override fun onStart() {
                         }
 
-                        override fun onGetFileNum(fileNum: Int) {}
-                        override fun onProgress(name: String, size: Long) {
+                        override fun onGetFileNum(fileNum: Int) {
                         }
 
-                        override fun onError(errorCode: Int, message: String) {
+                        override fun onProgress(name: String?, size: Long) {
+                        }
+
+                        override fun onError(errorCode: Int, message: String?) {
                         }
 
                         override fun onSucceed() {
@@ -118,6 +119,7 @@ class WelcomeActivity: ComponentActivity() {
                             }
                             isFileExtracting.value = false
                         }
+
                     })
             }
         }

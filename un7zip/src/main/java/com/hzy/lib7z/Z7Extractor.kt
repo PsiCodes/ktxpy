@@ -1,27 +1,26 @@
-package com.hzy.lib7z;
+package com.hzy.lib7z
 
-import android.content.res.AssetManager;
-import android.text.TextUtils;
+import com.hzy.lib7z.Z7Extractor.LibLoader
+import com.hzy.lib7z.Z7Extractor
+import com.hzy.lib7z.IExtractCallback
+import com.hzy.lib7z.ErrorCode
+import android.content.res.AssetManager
+import android.text.TextUtils
+import java.io.File
 
-import java.io.File;
-public class Z7Extractor {
-
-    public static final long DEFAULT_IN_BUF_SIZE = 0x4000000;
-    private static final String lib7z = "un7zip";
-    private static boolean mLibLoaded = false;
-
-    public static void init() {
-        init(null);
-    }
-
-    public static void init(LibLoader loader) {
+object Z7Extractor {
+    const val DEFAULT_IN_BUF_SIZE: Long = 0x4000000
+    private const val lib7z = "un7zip"
+    private var mLibLoaded = false
+    @JvmOverloads
+    fun init(loader: LibLoader? = null) {
         if (!mLibLoaded) {
             if (loader != null) {
-                loader.loadLibrary(lib7z);
+                loader.loadLibrary(lib7z)
             } else {
-                System.loadLibrary(lib7z);
+                System.loadLibrary(lib7z)
             }
-            mLibLoaded = true;
+            mLibLoaded = true
         }
     }
 
@@ -30,12 +29,13 @@ public class Z7Extractor {
      *
      * @return Lzma version name
      */
-    public static String getLzmaVersion() {
-        if (!mLibLoaded) {
-            init();
+    val lzmaVersion: String
+        get() {
+            if (!mLibLoaded) {
+                init()
+            }
+            return nGetLzmaVersion()
         }
-        return nGetLzmaVersion();
-    }
 
     /**
      * Extract every thing from a 7z file to some place
@@ -45,20 +45,21 @@ public class Z7Extractor {
      * @param callback callback
      * @return status
      */
-    public static int extractFile(String filePath, String outPath,
-                                  IExtractCallback callback) {
+    fun extractFile(
+        filePath: String?, outPath: String?,
+        callback: IExtractCallback?
+    ): Int {
         if (!mLibLoaded) {
-            init();
+            init()
         }
-        File inputFile = new File(filePath);
+        val inputFile = File(filePath)
         if (TextUtils.isEmpty(filePath) || !inputFile.exists() ||
-                TextUtils.isEmpty(outPath) || !prepareOutPath(outPath)) {
-            if (callback != null) {
-                callback.onError(ErrorCode.ERROR_CODE_PATH_ERROR, "File Path Error!");
-            }
-            return ErrorCode.ERROR_CODE_PATH_ERROR;
+            TextUtils.isEmpty(outPath) || !prepareOutPath(outPath)
+        ) {
+            callback?.onError(ErrorCode.ERROR_CODE_PATH_ERROR, "File Path Error!")
+            return ErrorCode.ERROR_CODE_PATH_ERROR
         }
-        return nExtractFile(filePath, outPath, callback, DEFAULT_IN_BUF_SIZE);
+        return nExtractFile(filePath, outPath, callback, DEFAULT_IN_BUF_SIZE)
     }
 
     /**
@@ -70,18 +71,18 @@ public class Z7Extractor {
      * @param callback     callback
      * @return status
      */
-    public static int extractAsset(AssetManager assetManager, String fileName,
-                                   String outPath, IExtractCallback callback) {
+    fun extractAsset(
+        assetManager: AssetManager?, fileName: String?,
+        outPath: String?, callback: IExtractCallback?
+    ): Int {
         if (!mLibLoaded) {
-            init();
+            init()
         }
         if (TextUtils.isEmpty(fileName) || TextUtils.isEmpty(outPath) || !prepareOutPath(outPath)) {
-            if (callback != null) {
-                callback.onError(ErrorCode.ERROR_CODE_PATH_ERROR, "File Path Error!");
-            }
-            return ErrorCode.ERROR_CODE_PATH_ERROR;
+            callback?.onError(ErrorCode.ERROR_CODE_PATH_ERROR, "File Path Error!")
+            return ErrorCode.ERROR_CODE_PATH_ERROR
         }
-        return nExtractAsset(assetManager, fileName, outPath, callback, DEFAULT_IN_BUF_SIZE);
+        return nExtractAsset(assetManager, fileName, outPath, callback, DEFAULT_IN_BUF_SIZE)
     }
 
     /**
@@ -90,25 +91,27 @@ public class Z7Extractor {
      * @param outPath out path
      * @return status
      */
-    private static boolean prepareOutPath(String outPath) {
-        File outDir = new File(outPath);
+    private fun prepareOutPath(outPath: String?): Boolean {
+        val outDir = File(outPath)
         if (!outDir.exists()) {
-            if (outDir.mkdirs())
-                return true;
+            if (outDir.mkdirs()) return true
         }
-        return outDir.exists() && outDir.isDirectory();
+        return outDir.exists() && outDir.isDirectory
     }
 
-    public static native int nExtractFile(String filePath, String outPath,
-                                          IExtractCallback callback, long inBufSize);
+    external fun nExtractFile(
+        filePath: String?, outPath: String?,
+        callback: IExtractCallback?, inBufSize: Long
+    ): Int
 
-    public static native int nExtractAsset(AssetManager assetManager,
-                                           String fileName, String outPath,
-                                           IExtractCallback callback, long inBufSize);
+    external fun nExtractAsset(
+        assetManager: AssetManager?,
+        fileName: String?, outPath: String?,
+        callback: IExtractCallback?, inBufSize: Long
+    ): Int
 
-    public static native String nGetLzmaVersion();
-
-    public interface LibLoader {
-        void loadLibrary(String libName);
+    external fun nGetLzmaVersion(): String
+    interface LibLoader {
+        fun loadLibrary(libName: String?)
     }
 }

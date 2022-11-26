@@ -1,12 +1,9 @@
-package com.hzy.lib7z;
-public interface IExtractCallback {
-    void onStart();
+package com.hzy.lib7z
 
-    void onGetFileNum(int fileNum);
-
-    void onProgress(String name, long size);
-
-    void onError(int errorCode, String message);
-
-    void onSucceed();
+interface IExtractCallback {
+    fun onStart()
+    fun onGetFileNum(fileNum: Int)
+    fun onProgress(name: String?, size: Long)
+    fun onError(errorCode: Int, message: String?)
+    fun onSucceed()
 }
