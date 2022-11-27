@@ -68,7 +68,7 @@ fun WelcomeScreen(welcomeActivity: WelcomeActivity, navigator: DestinationsNavig
             val intent=Intent(welcomeActivity, TermActivity::class.java)
             intent.putExtra("Command",Commands.getInitialCommand(welcomeActivity))
             welcomeActivity.startActivity(intent)
-                scope.launch { mViewModel.mDrawerState.value.close() }},
+            scope.launch { mViewModel.mDrawerState.value.close() }},
         MenuItem("Samples","Samples",R.drawable.ic_baseline_laptop_24){
             navigator.navigate(SampleScreenDestination)
             scope.launch { mViewModel.mDrawerState.value.close() }}, MenuItem("PythonShell","Interactive Mode",R.drawable.ic_baseline_keyboard_double_arrow_right_24){
@@ -91,8 +91,8 @@ fun WelcomeScreen(welcomeActivity: WelcomeActivity, navigator: DestinationsNavig
     ModalNavigationDrawer(
         drawerState = mViewModel.mDrawerState.value,
         drawerContent = {
-            val width=if(LocalConfiguration.current.orientation==1) (LocalConfiguration.current.screenWidthDp/1.5).dp else (LocalConfiguration.current.screenWidthDp/2.5).dp
-            ModalDrawerSheet(){
+            val mModifier=if(LocalConfiguration.current.orientation==1) Modifier.requiredWidth((LocalConfiguration.current.screenWidthDp*0.75).dp) else Modifier
+            ModalDrawerSheet(mModifier){
                 Spacer(Modifier.height(12.dp))
                 items.forEach { item ->
                     NavigationDrawerItem(
@@ -106,86 +106,86 @@ fun WelcomeScreen(welcomeActivity: WelcomeActivity, navigator: DestinationsNavig
             }
         }
     ){
-    Scaffold(
-        topBar =
-        {
-            TopAppBar(title = { Text(text = "KtxPy", fontFamily=FontFamily(Font(resId = R.font.roboto_condensed_bold)))},
-                modifier = Modifier.padding(10.dp,0.dp,10.dp,2.dp),
-                navigationIcon = {Icon(Icons.Filled.Menu ,contentDescription ="Menu", modifier = Modifier.clickable {scope.launch {mViewModel.mDrawerState.value.open()}})},
-                actions = {
-                    Icon(Icons.Default.Info, contentDescription = "Info",
-                        Modifier
-                            .size(26.dp)
-                            .clickable { navigator.navigate(AboutScreenDestination) })
-                })
-        },
-        floatingActionButton =
-        {   FloatingActionButton(
-            onClick = {
-                scope.launch{
-                    mViewModel.showDialog()
-                }
-                      },
-            content = { Icon(Icons.Filled.Add,contentDescription ="Plus button")},
-        )}
-    ){
-        LazyColumn(
-            Modifier.padding(it)
-        )
-        {
-        items(pythonFilesList.size)
-        { index->
-            Row(
-                Modifier
-                    .padding(10.dp)
-                    .fillMaxWidth()
-                    .clickable {
-                        welcomeActivity.startEditorActivity(pythonFilesList[index])
-                    })
+        Scaffold(
+            topBar =
             {
-                Icon(painter = painterResource(id = R.drawable.python_seeklogo_com), contentDescription = null, modifier = Modifier
-                    .size(42.dp)
-                    .padding(4.dp, 2.dp, 2.dp, 4.dp))
-                Text(text =pythonFilesList[index].name,
-                    fontFamily = FontFamily(Font(resId = R.font.custom_sans)),
-                    modifier = Modifier.padding(4.dp,2.dp,2.dp,5.dp),
-                    maxLines = 2 ,
-                    fontSize = 14.sp
+                TopAppBar(title = { Text(text = "KtxPy", fontFamily=FontFamily(Font(resId = R.font.roboto_condensed_bold)))},
+                    modifier = Modifier.padding(10.dp,0.dp,10.dp,2.dp),
+                    navigationIcon = {Icon(Icons.Filled.Menu ,contentDescription ="Menu", modifier = Modifier.clickable {scope.launch {mViewModel.mDrawerState.value.open()}})},
+                    actions = {
+                        Icon(Icons.Default.Info, contentDescription = "Info",
+                            Modifier
+                                .size(26.dp)
+                                .clickable { navigator.navigate(AboutScreenDestination) })
+                    })
+            },
+            floatingActionButton =
+            {   FloatingActionButton(
+                onClick = {
+                    scope.launch{
+                        mViewModel.showDialog()
+                    }
+                },
+                content = { Icon(Icons.Filled.Add,contentDescription ="Plus button")},
+            )}
+        ){
+            LazyColumn(
+                Modifier.padding(it)
+            )
+            {
+                items(pythonFilesList.size)
+                { index->
+                    Row(
+                        Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth()
+                            .clickable {
+                                welcomeActivity.startEditorActivity(pythonFilesList[index])
+                            })
+                    {
+                        Icon(painter = painterResource(id = R.drawable.python_seeklogo_com), contentDescription = null, modifier = Modifier
+                            .size(42.dp)
+                            .padding(4.dp, 2.dp, 2.dp, 4.dp))
+                        Text(text =pythonFilesList[index].name,
+                            fontFamily = FontFamily(Font(resId = R.font.custom_sans)),
+                            modifier = Modifier.padding(4.dp,2.dp,2.dp,5.dp),
+                            maxLines = 2 ,
+                            fontSize = 14.sp
+                        )
+                    }
+                    Divider(Modifier.fillMaxWidth(1f))
+                }
+
+            }
+            if (mViewModel.mDialogState.value)
+            {
+                MyDialog (mViewModel.mFileName.value,"Create new file",
+                    "Create",
+                    onDismissReq =
+                    {
+                        mViewModel.dismissDialog()
+                    },
+                    onclickConfirmButton =
+                    {
+                        scope.launch {
+                            mViewModel.saveFile(mViewModel.mFileName.value)
+                            mViewModel.dismissDialog()
+                            mViewModel.changeFileName("")
+                        }
+                    },
+                    onclickDeclineButton =
+                    {
+                        scope.launch {
+                            mViewModel.dismissDialog()
+                        }
+                    },
+                    onValueChange = { string->
+                        scope.launch {
+                            mViewModel.changeFileName(string)}
+                    }
                 )
             }
-            Divider(Modifier.fillMaxWidth(1f))
-        }
-
-        }
-        if (mViewModel.mDialogState.value)
-        {
-            MyDialog (mViewModel.mFileName.value,"Create new file",
-                "Create",
-                onDismissReq =
-                {
-                    mViewModel.dismissDialog()
-                },
-                onclickConfirmButton =
-                {
-                    scope.launch {
-                        mViewModel.saveFile(mViewModel.mFileName.value)
-                        mViewModel.dismissDialog()
-                        mViewModel.changeFileName("")
-                    }
-                },
-                onclickDeclineButton =
-                {
-                    scope.launch {
-                        mViewModel.dismissDialog()
-                    }
-                },
-                onValueChange = { string->
-                    scope.launch {
-                   mViewModel.changeFileName(string)}
-                }
-                )
-        }
-}}}
+        }}}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyDialog(text:String,title:String,confirm:String,onDismissReq:()->Unit,onclickConfirmButton:()->Unit,onclickDeclineButton: () -> Unit,onValueChange:(String)->Unit){
