@@ -1,8 +1,7 @@
 <h2>KtxPy</h2>
 <p align='center'>
-<img width='300px%' height='300px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg' >
+<img width='400px%' height='400px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg' >
 </p>
-
 <div>
   <a href=''>
     <img width='170px%' alt='Get it on Github' src='https://raw.githubusercontent.com/andOTP/andOTP/master/assets/badges/get-it-on-github.png'/>
@@ -11,31 +10,50 @@
 
 
 ## Overview
-This Project is Developed for running Python3.11 i.e latest version of android on python,it also comes with Material3 Ui.
-## Todo
-1. Add Support For Various libraries like Matplotlib,Numpy & Beautiful soup etc;
-2. Proper Code Recommendation;
-3. Error detection
-4. More themes and Customization options;
-5. Add support for gui libraries like tkinter,turtle etc;
+This Project is Developed for running Python3.11 i.e latest version of android on python,it also comes with Material3.
 
 
-## What does tools the project include?
-1. Editor->For Editing Python files along with syntax highlighting;
-2. Python Interactive Mode;
-3. Terminal with busybox;
+
+## Screenshots
+
+
+## Features
+
+- [x] Python Latest Version
+
+- [x] Editor Themes
+
+- [x] Material3
+
+- [x] X86 support
+
+- [ ] Pip
+
+- [ ] Scikit Learn
+
+- [ ] Gui Libraries
 
 ## How to build this source
-Can be built using latest version of android studio
+Can be Built Using Latest Version Of Android Studio
 
+Select Build Flavour According to Need ->
+
+* Select ` arch_x86_64 ` for x86 CPU Architecture
+* Select ` arch_arm64 ` for arm CPU Architecture
 
 ## Contribute
 I would absolutely love every possible kind of contributions. If you
 have a questions, ideas, need help or want to propose a change just open
 an issue. Pull request are greatly appreciated.
 
+
+## Contributors
+<a href="https://github.com/PsiCodes/KtxPy/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=PsiCodes/KtxPy" />
+</a>
+
 ## Special Thanks
-Special Thanks To Rosmoe for awesome editor,Roumen Petrov for termoneplus & hzy3774 for un7zip
+Special Thanks To Rosmoe,Roumen Petrov & Hzy3774
 
 ## GNU GPL 3.0 Licence
 
