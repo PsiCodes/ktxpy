@@ -91,8 +91,12 @@ fun WelcomeScreen(welcomeActivity: WelcomeActivity, navigator: DestinationsNavig
     ModalNavigationDrawer(
         drawerState = mViewModel.mDrawerState.value,
         drawerContent = {
-            val mModifier=if(LocalConfiguration.current.orientation==1) Modifier.requiredWidth((LocalConfiguration.current.screenWidthDp*0.75).dp) else Modifier
-            ModalDrawerSheet(mModifier){
+            ModalDrawerSheet(modifier = Modifier
+                .sizeIn(
+                    minWidth = 240.dp,
+                    maxWidth = 290.dp
+                )
+                .fillMaxHeight()){
                 Spacer(Modifier.height(12.dp))
                 items.forEach { item ->
                     NavigationDrawerItem(

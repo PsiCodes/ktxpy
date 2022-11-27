@@ -60,7 +60,6 @@ class WelcomeScreenViewModel(application: Application) :AndroidViewModel(applica
     fun changeFileName(fileName: String) {
         _mFileName.value=fileName
     }
-
     fun dismissDialog() {
         _mFileName.value=""
         _mDialogState.value=false
