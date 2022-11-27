@@ -15,7 +15,7 @@ This Project is Developed for running Python3.11 i.e latest version of android o
 
 
 ## Screenshots
-<img src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/example2.png' >
+<img  width='1200px%' height='443px%' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/example2.png' >
 
 ## Features
 
