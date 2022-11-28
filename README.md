@@ -15,8 +15,14 @@ This Project is Developed for running Python3.11 i.e latest version of android o
 
 
 ## Screenshots
-<img style="width: 25%; height: 80%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot1.svg"><img style="width: 25%; height: 80%" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot2.svg"><img style="width: 25%; height: 80%" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot3.svg"><img style="width: 25%; height: 80%" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot4.svg">
-
+<p align='center'>
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot1.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot2.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot3.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot5.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot4.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot6.svg">  
+</p>
 ## Features
 
 - [x] Python Latest Version
