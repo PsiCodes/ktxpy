@@ -3,7 +3,7 @@
 <img width='400px%' height='400px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg' >
 </p>
 <div>
-  <a href=''>
+  <a href='https://github.com/PsiCodes/KtxPy/releases/tag/v1.1.0'>
     <img width='170px%' alt='Get it on Github' src='https://raw.githubusercontent.com/andOTP/andOTP/master/assets/badges/get-it-on-github.png'/>
   </a>
 </div>
