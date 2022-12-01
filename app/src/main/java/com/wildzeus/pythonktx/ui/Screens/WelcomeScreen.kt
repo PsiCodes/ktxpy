@@ -26,8 +26,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -133,6 +133,7 @@ fun WelcomeScreen(welcomeActivity: WelcomeActivity, navigator: DestinationsNavig
                 content = { Icon(Icons.Filled.Add,contentDescription ="Plus button")},
             )}
         ){
+            if (pythonFilesList.isNotEmpty()){
             LazyColumn(
                 Modifier.padding(it)
             )
@@ -160,6 +161,13 @@ fun WelcomeScreen(welcomeActivity: WelcomeActivity, navigator: DestinationsNavig
                     Divider(Modifier.fillMaxWidth(1f))
                 }
 
+            }}else{
+                    Column(modifier = Modifier.fillMaxSize(),horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center)
+                    {
+                        Icon(painter = painterResource(id = R.drawable.ic_baseline_sentiment_dissatisfied_24), contentDescription = null, modifier = Modifier.size(64.dp), tint = MaterialTheme.colorScheme.primary)
+                        Text(text = "No Python files", color = MaterialTheme.colorScheme.primary, fontFamily =FontFamily(Font(R.font.roboto_condensed_bold)))
+                        Text(text = "Create by clicking on \"+\" icon ", color = MaterialTheme.colorScheme.primary, fontSize = 15.sp,fontFamily =FontFamily(Font(R.font.roboto_condensed_bold)))
+                    }
             }
             if (mViewModel.mDialogState.value)
             {
