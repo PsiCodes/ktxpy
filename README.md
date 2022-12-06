@@ -1,6 +1,6 @@
 <h2>KtxPy</h2>
 <p align='center'>
-<img width='400px%' height='400px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg?sanitize=true' >
+<img width='400px%' height='400px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.png?sanitize=true' >
 </p>
 
   <a href='https://github.com/PsiCodes/KtxPy/releases/tag/v1.1.0'>
