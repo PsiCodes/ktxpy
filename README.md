@@ -1,6 +1,6 @@
 <h2>KtxPy</h2>
 <p align='center'>
-<img width='400px%' height='400px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg' >
+<img width='400px%' height='400px' src='Images/Vector.svg' >
 </p>
 <div>
   <a href='https://github.com/PsiCodes/KtxPy/releases/tag/v1.1.0'>
@@ -16,12 +16,12 @@ This Project is Developed for running Python3.11 i.e latest version of android o
 
 ## Screenshots
 <p align='center'>
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot1.svg">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot2.svg">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot3.svg">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot5.svg">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot4.svg">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot6.svg">  
+<img style="width: 30%; height: 96%; padding-right: 10px" src="Images/ScreenShots/ScreenShot1.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="Images/ScreenShots/ScreenShot2.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="Images/ScreenShots/ScreenShot3.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="Images/ScreenShots/ScreenShot5.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="Images/ScreenShots/ScreenShot4.svg">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="Images/ScreenShots/ScreenShot6.svg">
 </p>
 
 ## Features
