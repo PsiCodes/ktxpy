@@ -22,7 +22,6 @@ import android.content.Intent
 import android.content.ServiceConnection
 import android.content.ComponentName
 import android.os.IBinder
-import jackpal.androidterm.TermService.TSBinder
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -41,7 +40,7 @@ open class RemoteActionActivity : AppCompatActivity() {
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
             termService = null
             if (service == null) return
-            val binder = service as TSBinder
+            val binder = service as TermService.TSBinder
             termService = binder.service
             processIntent()
         }

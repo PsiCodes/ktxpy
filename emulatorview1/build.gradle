@@ -4,6 +4,7 @@ plugins {
 
 android {
     compileSdkVersion 33
+    ndkVersion "25.1.8937393"
     defaultConfig {
         minSdkVersion 26
         targetSdkVersion 33
@@ -19,6 +20,7 @@ android {
         }
     }
     ndkVersion '23.1.7779620'
+    namespace 'jackpal.androidterm.emulatorview'
 }
 
 dependencies {

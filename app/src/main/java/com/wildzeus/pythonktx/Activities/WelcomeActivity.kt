@@ -54,12 +54,12 @@ class WelcomeActivity: ComponentActivity() {
             try {
                 if(result!=null){
                 val filePath:String= getRealPathFromURIAPI19(this, result)?:""
-                        if (filePath.endsWith(".py") || filePath.endsWith(".py"))   {
+                if (filePath.endsWith(".py") )   {
                             val mIntent = Intent(this, EditorActivity::class.java)
                             mIntent.putExtra("fileUrl", filePath)
                             Log.d("TAG",result.toString())
                             startActivity(mIntent)
-                        }
+                }
                 }}catch (e: Exception) {
                 e.printStackTrace()
                 Toast.makeText(this,"Only Python files are allowed",Toast.LENGTH_LONG).show()
@@ -91,6 +91,7 @@ class WelcomeActivity: ComponentActivity() {
                     )
             }
             }}
+        Log.d(TAG,this.getApplicationInfo().nativeLibraryDir.toString())
         extractFiles()
         }
     private fun extractFiles() {
@@ -134,5 +135,8 @@ class WelcomeActivity: ComponentActivity() {
     fun openPythonFile()
     {
         loadTMTLauncher.launch("text/*")
+    }
+    companion object {
+        const val TAG = "WelcomeActivity"
     }
 }

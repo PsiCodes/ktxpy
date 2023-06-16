@@ -245,11 +245,6 @@ public class Term extends AppCompatActivity
                 .registerOnSharedPreferenceChangeListener(this);
 
         TSIntent = new Intent(this, TermService.class);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O /*API level 26*/)
-            startForegroundService(TSIntent);
-        else
-            startService(TSIntent);
-
         mActionBar = TermActionBar.setTermContentView(this,
                 mActionBarMode == TermSettings.ACTION_BAR_MODE_HIDES);
         mActionBar.setOnItemSelectedListener(position -> {

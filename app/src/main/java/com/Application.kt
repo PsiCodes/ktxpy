@@ -46,7 +46,6 @@ class Application : Application() {
         Installer.install_directory(etcdir!!, false)
         install_skeleton()
         val exe = File(xbindir, Installer.APPINFO_COMMAND)
-        Log.d("hello", applicationInfo.nativeLibraryDir.toString())
         if (!exe.canExecute()) {
             // Old Android (API Level < 17) - libraries are without executable bit set
             xbindir = File(rootdir, ".x")

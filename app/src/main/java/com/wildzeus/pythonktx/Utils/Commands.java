@@ -24,7 +24,7 @@ public class Commands {
     }
     public static String getInitialCommand(Context context){
         String fileDir=context.getFilesDir().toString();
-        return  ("clear && cd "+fileDir+"/build/build  && export PATH=$PATH:"+context.getApplicationInfo().nativeLibraryDir.toString()+"&& export PYTHONHOME="+fileDir+"/build/build/usr && export PYTHONPATH="+context.getApplicationInfo().nativeLibraryDir.toString()+" &&  export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:\" && export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH$PWD/usr/lib\" && cd /storage/emulated/0");
+        return  ("clear && cd "+fileDir+"/build/build  && export PATH=$PATH:"+context.getApplicationInfo().nativeLibraryDir.toString()+"&& export PYTHONHOME="+fileDir+"/build/build/usr && export PYTHONPATH="+context.getApplicationInfo().nativeLibraryDir.toString()+" &&  export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH:\" && export LD_LIBRARY_PATH=\"$LD_LIBRARY_PATH$PWD/usr/lib\" && cd /storage/emulated/0 && alias python='libpython3.so' && alias pip='python $HOME/../files/usr/bin/pip3' && alias pip='python $HOME/../files/build/build/usr/bin/pip'");
     }
     public static String getInteractiveMode(Context context){
         String fileDir=context.getFilesDir().toString();
