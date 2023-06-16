@@ -34,7 +34,7 @@ This Project is Developed for running Python3.11 i.e latest version of android o
 
 - [x] X86 support
 
-- [ ] Pip
+- [x] Pip
 
 - [ ] Scikit Learn
 
