@@ -66,19 +66,32 @@ public class TermService extends Service {
     @Override
     public void onCreate() {
         /* Put the service in the foreground. */
+        Notification notification = buildNotification();
+        notification.flags |= Notification.FLAG_ONGOING_EVENT;
+        startForeground(RUNNING_NOTIFICATION, notification);
+
         command_service = new CommandService(this);
         command_service.start();
+
         Log.d(Application.APP_TAG, "TermService started");
     }
 
     @Override
     public void onDestroy() {
         command_service.stop();
-        for (TermSession session : mTermSessions){
+
+        for (TermSession session : mTermSessions) {
+            /* Don't automatically remove from list of sessions -- we clear the
+             * list below anyway and we could trigger
+             * ConcurrentModificationException if we do */
             session.setFinishCallback(null);
             session.finish();
         }
         mTermSessions.clear();
+        StopForeground.stop(this);
+    }
+
+    public void stopServiceOnTermStop(){
         StopForeground.stop(this);
     }
 
@@ -110,9 +123,64 @@ public class TermService extends Service {
     private void onSessionFinish(TermSession session) {
         mTermSessions.remove(session);
     }
+
+    private Notification buildNotification() {
+        NotificationChannelCompat.create(this);
+
+        Intent notifyIntent = new Intent(this, TermActivity.class);
+        notifyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent = ActivityPendingIntent.get(this, 0, notifyIntent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,
+                Application.NOTIFICATION_CHANNEL_SESSIONS)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Python IDE")
+                .setContentText(getText(R.string.service_notify_text))
+                .setCategory(NotificationCompat.CATEGORY_SERVICE)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setTicker(getText(R.string.service_notify_text))
+                .setWhen(System.currentTimeMillis())
+                .setContentIntent(pendingIntent);
+        return builder.build();
+    }
+
+
+    private static class NotificationChannelCompat {
+        private static void create(TermService service) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O /*API Level 26*/) return;
+            // Create the NotificationChannel, but only on API 26+ because
+            // the NotificationChannel class is new and not in the support library
+            Compat26.create(service);
+        }
+
+        @RequiresApi(26)
+        private static class Compat26 {
+            private static void create(TermService service) {
+                NotificationChannel channel = new NotificationChannel(
+                        Application.NOTIFICATION_CHANNEL_SESSIONS,
+                        "TermOnePlus",
+                        NotificationManager.IMPORTANCE_LOW);
+                channel.setDescription("TermOnePlus running notification");
+                channel.setShowBadge(false);
+
+                // Register the channel with the system ...
+                // Note we can't change the importance or other notification behaviors after this.
+                NotificationManager notificationManager = service.getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
+    }
+
+
     private static class ActivityPendingIntent {
         private static PendingIntent get(Context context, int requestCode, Intent intent, int flags) {
-            flags |= PendingIntent.FLAG_IMMUTABLE;
+            /* Notes:
+            It target is Android API Level 31 pending intents must set explicitly one of "mutable"
+            flags. Versions before assume mutable by default.
+            Let force immutable value on first available version.
+            */
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M /*API level 23*/)
+                flags |= PendingIntent.FLAG_IMMUTABLE;
             return PendingIntent.getActivity(context, requestCode, intent, flags);
         }
     }
@@ -123,12 +191,21 @@ public class TermService extends Service {
             Compat24.stop(service);
         }
 
+        @RequiresApi(24)
         private static class Compat24 {
             private static void stop(Service service) {
                 service.stopForeground(STOP_FOREGROUND_REMOVE);
             }
         }
 
+        // Explicitly suppress deprecation warnings
+        // "stopForeground(boolean) in Service has been deprecated" in API level 33
+        @SuppressWarnings({"deprecation", "RedundantSuppression"})
+        private static class Compat5 {
+            private static void stop(Service service) {
+                service.stopForeground(true);
+            }
+        }
     }
 
 

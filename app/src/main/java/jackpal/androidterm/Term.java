@@ -245,6 +245,8 @@ public class Term extends AppCompatActivity
                 .registerOnSharedPreferenceChangeListener(this);
 
         TSIntent = new Intent(this, TermService.class);
+        startForegroundService(TSIntent);
+
         mActionBar = TermActionBar.setTermContentView(this,
                 mActionBarMode == TermSettings.ACTION_BAR_MODE_HIDES);
         mActionBar.setOnItemSelectedListener(position -> {
@@ -332,7 +334,7 @@ public class Term extends AppCompatActivity
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-           doCloseWindow();
+            doCloseWindow();
         }
         return true;
     }
@@ -356,9 +358,9 @@ public class Term extends AppCompatActivity
         mViewFlipper.removeView(view);
         TermSession session = view.getTermSession();
         session.finish();
+        mTermService.stopServiceOnTermStop();
         mTermService=null;
         finish();
-
     }
 
     private TermSession createTermSession() throws IOException {
@@ -372,7 +374,7 @@ public class Term extends AppCompatActivity
         emulatorView.setExtGestureListener(new EmulatorViewGestureListener(emulatorView));
         emulatorView.setOnKeyListener(mKeyListener);
         emulatorView.setOnToggleSelectingTextListener(
-               () -> mActionBar.lockDrawer(emulatorView.getSelectingText()));
+                () -> mActionBar.lockDrawer(emulatorView.getSelectingText()));
         registerForContextMenu(emulatorView);
 
         return emulatorView;
@@ -490,7 +492,7 @@ public class Term extends AppCompatActivity
             v.updateSize(false);
         }
     }
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         /* NOTE: Resource IDs will be non-final in Android Gradle Plugin version 5.0,
            avoid using them in switch case statements */
@@ -688,13 +690,13 @@ public class Term extends AppCompatActivity
             case Permissions.REQUEST_EXTERNAL_STORAGE: {
                 if (Permissions.isPermissionGranted(grantResults)) {
                     Snackbar.make(mViewFlipper,
-                            R.string.message_external_storage_granted,
-                            Snackbar.LENGTH_SHORT)
+                                    R.string.message_external_storage_granted,
+                                    Snackbar.LENGTH_SHORT)
                             .show();
                 } else {
                     Snackbar.make(mViewFlipper,
-                            R.string.message_external_storage_not_granted,
-                            Snackbar.LENGTH_SHORT)
+                                    R.string.message_external_storage_not_granted,
+                                    Snackbar.LENGTH_SHORT)
                             .show();
                 }
                 return;
