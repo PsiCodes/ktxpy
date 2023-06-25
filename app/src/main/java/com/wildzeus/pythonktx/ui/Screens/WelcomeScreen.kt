@@ -61,9 +61,6 @@ fun WelcomeScreen(welcomeActivity: WelcomeActivity, navigator: DestinationsNavig
     pythonFilesList.sortBy { it.lastModified() }
     val items = listOf(
         MenuItem("Home","Home",R.drawable.ic_baseline_home_24){},
-        MenuItem("Info", "About",R.drawable.ic_baseline_info_24){
-            navigator.navigate(AboutScreenDestination)
-            scope.launch { mViewModel.mDrawerState.value.close() }},
         MenuItem("Terminal","Terminal",R.drawable.ic_baseline_terminal_24){
             val intent=Intent(welcomeActivity, TermActivity::class.java)
             intent.putExtra("Command",Commands.getInitialCommand(welcomeActivity))
@@ -86,7 +83,10 @@ fun WelcomeScreen(welcomeActivity: WelcomeActivity, navigator: DestinationsNavig
         },
         MenuItem("Settings","Settings",R.drawable.ic_baseline_settings_24){
             navigator.navigate(SettingsScreenDestination())
-        }
+        },
+        MenuItem("Info", "About",R.drawable.ic_baseline_info_24){
+            navigator.navigate(AboutScreenDestination)
+            scope.launch { mViewModel.mDrawerState.value.close() }}
     )
     ModalNavigationDrawer(
         drawerState = mViewModel.mDrawerState.value,
