@@ -221,7 +221,7 @@ fun MyDialog(text:String,title:String,confirm:String,onDismissReq:()->Unit,oncli
             TextButton(
                 onClick =onclickDeclineButton
             ) {
-                Text("Exit")
+                Text("Cancel")
             }
         }
     )
