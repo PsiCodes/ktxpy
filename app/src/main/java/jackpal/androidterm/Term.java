@@ -17,7 +17,6 @@
 
 package jackpal.androidterm;
 
-import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
@@ -37,32 +36,14 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.snackbar.Snackbar;
-import com.termoneplus.AppCompatActivity;
-import com.Application;
-import com.termoneplus.Permissions;
-import com.termoneplus.TermActionBar;
-import com.termoneplus.compat.SoftInputCompat;
-import com.termoneplus.utils.ConsoleStartupScript;
-import com.termoneplus.utils.SimpleClipboardManager;
-import com.termoneplus.utils.WakeLock;
-import com.termoneplus.utils.WrapOpenURL;
-
-import java.io.IOException;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -70,6 +51,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
+
+import com.Application;
+import com.google.android.material.snackbar.Snackbar;
+import com.termoneplus.AppCompatActivity;
+import com.termoneplus.Permissions;
+import com.termoneplus.TermActionBar;
+import com.termoneplus.compat.SoftInputCompat;
+import com.termoneplus.utils.ConsoleStartupScript;
+import com.termoneplus.utils.SimpleClipboardManager;
+import com.termoneplus.utils.WakeLock;
+import com.termoneplus.utils.WrapOpenURL;
+import com.wildzeus.pythonktx.R;
+
+import java.io.IOException;
+
 import jackpal.androidterm.compat.PathCollector;
 import jackpal.androidterm.emulatorview.EmulatorView;
 import jackpal.androidterm.emulatorview.TermSession;
@@ -77,8 +73,6 @@ import jackpal.androidterm.emulatorview.UpdateCallback;
 import jackpal.androidterm.emulatorview.compat.KeycodeConstants;
 import jackpal.androidterm.util.SessionList;
 import jackpal.androidterm.util.TermSettings;
-
-import com.wildzeus.pythonktx.R;
 
 /**
  * A terminal emulator activity.

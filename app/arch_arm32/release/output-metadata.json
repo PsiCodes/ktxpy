@@ -1,0 +1,64 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.wildzeus.pythonktx",
+  "variantName": "arch_arm32Release",
+  "elements": [
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86_64"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 3001,
+      "versionName": "1.1.0-arm32",
+      "outputFile": "app-arch_arm32-x86_64-release.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "armeabi-v7a"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 3001,
+      "versionName": "1.1.0-arm32",
+      "outputFile": "app-arch_arm32-armeabi-v7a-release.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "x86"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 3001,
+      "versionName": "1.1.0-arm32",
+      "outputFile": "app-arch_arm32-x86-release.apk"
+    },
+    {
+      "type": "ONE_OF_MANY",
+      "filters": [
+        {
+          "filterType": "ABI",
+          "value": "arm64-v8a"
+        }
+      ],
+      "attributes": [],
+      "versionCode": 3001,
+      "versionName": "1.1.0-arm32",
+      "outputFile": "app-arch_arm32-arm64-v8a-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

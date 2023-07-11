@@ -1,8 +1,8 @@
 package jackpal.androidterm.util;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Collection;
+import java.util.LinkedList;
 
 import jackpal.androidterm.emulatorview.TermSession;
 import jackpal.androidterm.emulatorview.UpdateCallback;

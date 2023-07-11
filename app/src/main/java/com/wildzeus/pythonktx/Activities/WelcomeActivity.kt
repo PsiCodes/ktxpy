@@ -31,8 +31,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
-import com.hzy.lib7z.IExtractCallback
-import com.hzy.lib7z.Z7Extractor
+import com.hzy.libp7zip.P7ZipApi
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.defaults.RootNavGraphDefaultAnimations
 import com.ramcosta.composedestinations.animations.rememberAnimatedNavHostEngine
@@ -40,12 +39,15 @@ import com.ramcosta.composedestinations.navigation.dependency
 import com.wildzeus.pythonktx.DataStore.SettingsDataStore
 import com.wildzeus.pythonktx.FileEditing.utils.RealPathUtil.getRealPathFromURIAPI19
 import com.wildzeus.pythonktx.ui.NavGraphs
+import com.wildzeus.pythonktx.ui.Screens.getAssetFile
 import com.wildzeus.pythonktx.ui.theme.PythonkTXTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 
 class WelcomeActivity: ComponentActivity() {
@@ -91,7 +93,7 @@ class WelcomeActivity: ComponentActivity() {
                     )
             }
             }}
-        Log.d(TAG,this.getApplicationInfo().nativeLibraryDir.toString())
+        Log.d(TAG,this.applicationInfo.nativeLibraryDir.toString())
         extractFiles()
         }
     private fun extractFiles() {
@@ -100,28 +102,19 @@ class WelcomeActivity: ComponentActivity() {
             if (dataStore.areFilesExtracted.first() == true) {
                 isFileExtracting.value = false
             } else {
-                Z7Extractor.extractAsset(assets,
-                    "build.7z", filesDir.path,object : IExtractCallback{
-                        override fun onStart() {
-                        }
-
-                        override fun onGetFileNum(fileNum: Int) {
-                        }
-
-                        override fun onProgress(name: String?, size: Long) {
-                        }
-
-                        override fun onError(errorCode: Int, message: String?) {
-                        }
-
-                        override fun onSucceed() {
-                            CoroutineScope(Dispatchers.IO).launch {
-                                dataStore.updateFileStatus(true)
-                            }
-                            isFileExtracting.value = false
-                        }
-
-                    })
+                CoroutineScope(Dispatchers.IO).launch {
+                    val temp7zStream = assets.open("build.7z")
+                    val file = File("${filesDir.absolutePath}/build.7z")
+                    file.createNewFile()
+                    Files.copy(temp7zStream,file.toPath(),StandardCopyOption.REPLACE_EXISTING)
+                    P7ZipApi.executeCommand("7z x ${file.absolutePath} -o${filesDir.absolutePath}")
+                    file.delete()
+                    temp7zStream.close()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        dataStore.updateFileStatus(true)
+                    }
+                    isFileExtracting.value = false
+                }
             }
         }
     }

@@ -8,11 +8,14 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-import java.util.Iterator;
-import java.util.LinkedList;
-import com.wildzeus.pythonktx.R;
 
 import androidx.annotation.NonNull;
+
+import com.wildzeus.pythonktx.R;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
 import jackpal.androidterm.emulatorview.EmulatorView;
 import jackpal.androidterm.emulatorview.TermSession;
 import jackpal.androidterm.emulatorview.UpdateCallback;

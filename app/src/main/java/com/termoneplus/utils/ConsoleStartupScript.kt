@@ -17,11 +17,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 package com.termoneplus.utils
 
 import android.text.TextUtils
-import com.termoneplus.utils.ConsoleStartupScript
-import java.io.*
-import java.lang.StringBuilder
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
+import java.io.FileWriter
+import java.io.IOException
+import java.io.PrintWriter
 import java.text.DateFormat
-import java.util.*
+import java.util.Date
 
 object ConsoleStartupScript {
     fun read(homedir: String?): String {

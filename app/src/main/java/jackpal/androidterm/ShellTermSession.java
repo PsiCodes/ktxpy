@@ -9,14 +9,16 @@ import android.util.Log;
 import com.Application;
 import com.termoneplus.Process;
 
-import jackpal.androidterm.compat.PathSettings;
-import jackpal.androidterm.util.TermSettings;
-
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import jackpal.androidterm.compat.PathSettings;
+import jackpal.androidterm.util.TermSettings;
 
 
 /**

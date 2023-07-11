@@ -2,6 +2,7 @@ package jackpal.androidterm;
 
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
+
 import jackpal.androidterm.util.TermSettings;
 
 

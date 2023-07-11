@@ -16,14 +16,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.termoneplus.utils
 
-import androidx.annotation.RequiresApi
-import android.os.Environment
 import android.content.Intent
 import android.net.Uri
+import android.os.Environment
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.wildzeus.pythonktx.BuildConfig
-import java.lang.Exception
 
 @RequiresApi(30)
 object PermissionManageExternal {

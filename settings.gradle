@@ -19,4 +19,4 @@ rootProject.name = "PythonkTX"
 include ':app'
 include ':emulatorview1'
 include ':libtermexec1'
-include ':un7zip'
+include ':libp7zip'

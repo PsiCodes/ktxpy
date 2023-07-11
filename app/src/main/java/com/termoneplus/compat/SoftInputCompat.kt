@@ -19,12 +19,8 @@ package com.termoneplus.compat
 import android.content.Context
 import android.graphics.Rect
 import android.os.Build
-import com.termoneplus.compat.SoftInputCompat.Compat31
-import com.termoneplus.compat.SoftInputCompat.Compat3
-import android.util.DisplayMetrics
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.termoneplus.compat.SoftInputCompat
 
 object SoftInputCompat {
     @JvmStatic

@@ -16,12 +16,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.termoneplus
 
-import com.wildzeus.pythonktx.R
-import com.termoneplus.utils.ThemeManager
-import android.widget.Toast
 import android.view.Gravity
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import java.lang.Exception
+import com.termoneplus.utils.ThemeManager
+import com.wildzeus.pythonktx.R
 
 open class AppCompatActivity() : AppCompatActivity() {
     protected var themeId: Int? = null

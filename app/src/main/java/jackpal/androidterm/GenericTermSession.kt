@@ -1,16 +1,12 @@
 package jackpal.androidterm
 
 import android.os.ParcelFileDescriptor
-import android.support.v4.os.IResultReceiver._Parcel
 import android.util.Log
-import jackpal.androidterm.util.TermSettings
-import jackpal.androidterm.emulatorview.TermSession
-import jackpal.androidterm.GenericTermSession
-import jackpal.androidterm.emulatorview.UpdateCallback
 import com.termoneplus.TermIO
+import jackpal.androidterm.emulatorview.TermSession
+import jackpal.androidterm.util.TermSettings
 import java.io.IOException
 import java.io.UnsupportedEncodingException
-import java.lang.IllegalStateException
 
 /**
  * A terminal session, consisting of a TerminalEmulator, a TranscriptScreen,
