@@ -17,12 +17,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 package com.termoneplus.utils
 
 import android.net.Uri
-import jackpal.androidterm.emulatorview.TermSession
-import com.termoneplus.utils.ScriptImporter
-import com.wildzeus.pythonktx.R
-import android.widget.Toast
 import android.view.Gravity
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.wildzeus.pythonktx.R
+import jackpal.androidterm.emulatorview.TermSession
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream

@@ -16,12 +16,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.termoneplus;
 
-import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.MenuInflater;
@@ -29,14 +27,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.termoneplus.utils.ScriptImporter;
-import com.termoneplus.utils.ThemeManager;
-import com.wildzeus.pythonktx.R;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceManager;
+
+import com.termoneplus.utils.ScriptImporter;
+import com.termoneplus.utils.ThemeManager;
+import com.wildzeus.pythonktx.R;
 
 import jackpal.androidterm.emulatorview.TermSession;
 

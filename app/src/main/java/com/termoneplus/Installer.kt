@@ -16,15 +16,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.termoneplus
 
-import com.Application.Companion.scriptFilePath
-import com.Application.Companion.scriptFile
-import android.os.Build
-import com.termoneplus.Installer
 import android.content.res.AssetManager
+import android.os.Build
 import com.Application
-import java.io.*
-import java.lang.Exception
-import java.util.ArrayList
+import com.Application.Companion.scriptFile
+import com.Application.Companion.scriptFilePath
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
+import java.io.PrintWriter
 
 object Installer {
     var APPINFO_COMMAND: String? = null

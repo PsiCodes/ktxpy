@@ -4,15 +4,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.view.KeyEvent
-import androidx.annotation.IntDef
 import androidx.preference.PreferenceManager
 import com.termoneplus.Settings
-import jackpal.androidterm.util.TermSettings
 import com.wildzeus.pythonktx.R
 import jackpal.androidterm.emulatorview.ColorScheme
-import java.lang.NumberFormatException
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
 
 /**
  * Terminal emulator settings

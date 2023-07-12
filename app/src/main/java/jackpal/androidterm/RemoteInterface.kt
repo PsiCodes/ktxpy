@@ -1,19 +1,14 @@
 package jackpal.androidterm
 
-import com.termoneplus.RemoteActionActivity
 import android.content.Intent
 import android.net.Uri
 import android.text.TextUtils
 import com.Application
-import jackpal.androidterm.RemoteInterface
-import jackpal.androidterm.TermService
-import jackpal.androidterm.emulatorview.TermSession
+import com.termoneplus.RemoteActionActivity
 import com.termoneplus.TermActivity
-import jackpal.androidterm.GenericTermSession
 import java.io.File
 import java.io.IOException
-import java.lang.StringBuilder
-import java.util.*
+import java.util.UUID
 
 open class RemoteInterface : RemoteActionActivity() {
     override fun processAction(intent: Intent, action: String) {

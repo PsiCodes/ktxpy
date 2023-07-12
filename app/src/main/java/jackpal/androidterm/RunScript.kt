@@ -1,11 +1,10 @@
 package jackpal.androidterm
 
-import jackpal.androidterm.RemoteInterface
 import android.content.Intent
 import android.text.TextUtils
 import android.util.Log
 import com.Application
-import java.util.*
+import java.util.Locale
 
 /*
  * New procedure for launching a command in ATE.

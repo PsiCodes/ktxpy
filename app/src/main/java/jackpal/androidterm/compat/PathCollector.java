@@ -5,14 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.wildzeus.pythonktx.BuildConfig;
 
 import java.io.File;
 import java.text.Collator;
 import java.util.Arrays;
 import java.util.Locale;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 
 /* NOTE: refactored broadcast functionality from Term.java

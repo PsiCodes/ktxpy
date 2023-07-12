@@ -16,15 +16,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 package com.termoneplus
 
 import android.Manifest
-import android.os.Build
-import com.termoneplus.utils.PermissionManageExternal
-import androidx.core.app.ActivityCompat
 import android.content.pm.PackageManager
+import android.os.Build
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.google.android.material.snackbar.Snackbar
+import com.termoneplus.utils.PermissionManageExternal
 import com.wildzeus.pythonktx.R
-import java.util.ArrayList
 
 object Permissions {
     const val REQUEST_EXTERNAL_STORAGE = 101

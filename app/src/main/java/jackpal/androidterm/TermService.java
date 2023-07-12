@@ -29,6 +29,7 @@ import androidx.core.app.NotificationCompat;
 import com.Application;
 import com.termoneplus.TermActivity;
 import com.termoneplus.services.CommandService;
+import com.wildzeus.pythonktx.R;
 
 import java.util.UUID;
 
@@ -36,7 +37,6 @@ import jackpal.androidterm.emulatorview.TermSession;
 import jackpal.androidterm.libtermexec.v1.ITerminal;
 import jackpal.androidterm.util.SessionList;
 import jackpal.androidterm.util.TermSettings;
-import com.wildzeus.pythonktx.R;
 
 public class TermService extends Service {
     private static final int RUNNING_NOTIFICATION = 1;

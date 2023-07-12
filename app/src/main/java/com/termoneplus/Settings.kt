@@ -20,9 +20,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.text.TextUtils
 import com.wildzeus.pythonktx.R
-import com.termoneplus.Installer
 import jackpal.androidterm.emulatorview.ColorScheme
-import java.lang.Exception
 
 class Settings(context: Context, preferences: SharedPreferences) {
     private var source_sys_shrc: Boolean

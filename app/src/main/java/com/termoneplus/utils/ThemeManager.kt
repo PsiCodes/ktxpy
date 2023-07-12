@@ -17,10 +17,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 package com.termoneplus.utils
 
 import android.content.Context
-import android.content.SharedPreferences
-import com.termoneplus.utils.ThemeManager
-import android.widget.Toast
 import android.view.Gravity
+import android.widget.Toast
 import androidx.preference.PreferenceManager
 import com.wildzeus.pythonktx.R
 import java.io.File

@@ -16,19 +16,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.termoneplus.utils
 
-import android.os.PowerManager
 import android.annotation.SuppressLint
-import android.os.Build
-import androidx.annotation.RequiresApi
-import com.wildzeus.pythonktx.R
-import android.content.DialogInterface
-import android.content.Intent
 import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
+import android.os.Build
+import android.os.PowerManager
 import android.provider.Settings
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import com.Application
-import java.lang.Exception
+import com.wildzeus.pythonktx.R
 
 object WakeLock {
     private var lock: PowerManager.WakeLock? = null

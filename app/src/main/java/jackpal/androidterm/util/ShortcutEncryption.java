@@ -1,10 +1,9 @@
 package jackpal.androidterm.util;
 
-import androidx.preference.PreferenceManager;
-import jackpal.androidterm.compat.Base64;
-
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import androidx.preference.PreferenceManager;
 
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -15,12 +14,15 @@ import java.nio.charset.CodingErrorAction;
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
 import java.util.regex.Pattern;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import jackpal.androidterm.compat.Base64;
 
 
 /**

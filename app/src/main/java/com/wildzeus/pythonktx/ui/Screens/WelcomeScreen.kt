@@ -38,8 +38,8 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.termoneplus.TermActivity
-import com.wildzeus.pythonktx.R
 import com.wildzeus.pythonktx.Activities.WelcomeActivity
+import com.wildzeus.pythonktx.R
 import com.wildzeus.pythonktx.Utils.Commands
 import com.wildzeus.pythonktx.ViewModels.WelcomeScreenViewModel
 import com.wildzeus.pythonktx.ui.LayoutComponents.NavigationDrawer.MenuItem

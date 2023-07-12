@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.text.TextUtils;
+
+import androidx.preference.PreferenceManager;
+
 import com.wildzeus.pythonktx.R;
 
 import java.io.File;
-
-import androidx.preference.PreferenceManager;
 
 
 /* NOTE: refactored path settings from TermSettings.java

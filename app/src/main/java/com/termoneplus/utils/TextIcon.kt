@@ -21,8 +21,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
-import android.util.DisplayMetrics
-import com.termoneplus.utils.TextIcon
 
 object TextIcon {
     fun create(text: String, color: Int, width: Int, height: Int): Bitmap? {

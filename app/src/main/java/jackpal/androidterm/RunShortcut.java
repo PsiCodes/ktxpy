@@ -3,11 +3,12 @@ package jackpal.androidterm;
 import android.content.Intent;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.Application;
 
 import java.security.GeneralSecurityException;
 
-import androidx.annotation.NonNull;
 import jackpal.androidterm.util.ShortcutEncryption;
 
 

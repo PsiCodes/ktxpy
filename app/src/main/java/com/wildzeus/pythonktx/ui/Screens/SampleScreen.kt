@@ -42,9 +42,6 @@ import com.wildzeus.pythonktx.Activities.WelcomeActivity
 import com.wildzeus.pythonktx.R
 import com.wildzeus.pythonktx.ui.destinations.AboutScreenDestination
 import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.io.InputStream
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
 

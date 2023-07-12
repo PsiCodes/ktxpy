@@ -45,8 +45,9 @@ Can be Built Using Latest Version Of Android Studio
 
 Select Build Flavour According to Need ->
 
-* Select ` arch_x86_64 ` for x86 CPU Architecture
-* Select ` arch_arm64 ` for arm CPU Architecture
+* Select ` arch_x86_64 ` for x86 64bit CPU Architecture
+* Select ` arch_arm32 ` for arm32 CPU Architecture
+* Select ` arch_arm64 ` for arm64 CPU Architecture
 
 ## Contribute
 I would absolutely love every possible kind of contributions. If you

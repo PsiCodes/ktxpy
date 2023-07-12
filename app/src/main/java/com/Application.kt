@@ -18,20 +18,18 @@ package com
 
 import android.app.Application
 import android.content.Context
-import com.termoneplus.utils.ThemeManager
-import com.termoneplus.Installer
-import android.content.SharedPreferences
-import com.wildzeus.pythonktx.R
-import com.termoneplus.utils.ConsoleStartupScript
 import android.content.res.AssetManager
 import android.preference.PreferenceManager
 import android.util.Log
+import com.termoneplus.Installer
 import com.termoneplus.Settings
+import com.termoneplus.utils.ConsoleStartupScript
+import com.termoneplus.utils.ThemeManager
 import com.wildzeus.pythonktx.BuildConfig
+import com.wildzeus.pythonktx.R
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.lang.Exception
 
 class Application : Application() {
     override fun onCreate() {

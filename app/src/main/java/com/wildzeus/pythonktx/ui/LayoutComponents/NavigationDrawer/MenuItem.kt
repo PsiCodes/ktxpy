@@ -16,8 +16,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.wildzeus.pythonktx.ui.LayoutComponents.NavigationDrawer
 
-import androidx.compose.ui.graphics.vector.ImageVector
-
 data class MenuItem(
     val id:String, val title:String, val resID:Int, val clickable:()->Unit
 )

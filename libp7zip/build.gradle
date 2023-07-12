@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.github.panpf.bintray-publish'
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 33
+        versionCode 8
+        versionName "1.7.1"
+        externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_STL=c++_static', '-DANDROID_PLATFORM=android-18'
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            externalNativeBuild {
+                cmake {
+                    // log switch
+                    cppFlags.add('-DNATIVE_LOG')
+                }
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path 'src/main/cpp/CMakeLists.txt'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    ndkVersion '25.1.8937393'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+//publish {
+//    userOrg = 'huzongyao'
+//    groupId = 'com.hzy'
+//    artifactId = 'libp7zip'
+//    publishVersion = '1.7.1'
+//    desc = 'An Android compress and extract library support popular compression format such as rar, zip, tar, lzma. based on p7zip.'
+//    website = 'https://github.com/hzy3774/AndroidP7zip'
+//}

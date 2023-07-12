@@ -16,8 +16,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.wildzeus.pythonktx.ui.LayoutComponents.DropDownMenu
 
-import androidx.compose.ui.graphics.vector.ImageVector
-
 data class DropDownMenuItem(
     val Title:String,
     val Icon:Int,

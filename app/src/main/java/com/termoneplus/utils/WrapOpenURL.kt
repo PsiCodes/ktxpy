@@ -17,14 +17,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 package com.termoneplus.utils
 
 import android.R
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.content.pm.ResolveInfo
 import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AlertDialog
-import com.termoneplus.utils.WrapOpenURL
 import androidx.fragment.app.FragmentActivity
 
 object WrapOpenURL {

@@ -7,7 +7,6 @@ import android.util.DisplayMetrics;
 import jackpal.androidterm.emulatorview.EmulatorView;
 import jackpal.androidterm.emulatorview.TermSession;
 import jackpal.androidterm.util.TermSettings;
-import com.wildzeus.pythonktx.R;
 
 
 public class TermView extends EmulatorView {

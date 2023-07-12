@@ -16,18 +16,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.termoneplus
 
-import jackpal.androidterm.util.TermSettings
-import jackpal.androidterm.TermService
+import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
-import android.content.ComponentName
-import android.os.IBinder
 import android.os.Bundle
+import android.os.IBinder
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.Application
+import jackpal.androidterm.TermService
 import jackpal.androidterm.compat.PathCollector
-import jackpal.androidterm.compat.PathCollector.OnPathsReceivedListener
+import jackpal.androidterm.util.TermSettings
 
 open class RemoteActionActivity : AppCompatActivity() {
     @JvmField
@@ -71,7 +70,7 @@ open class RemoteActionActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (!bindService(service_intent, service_connection, BIND_AUTO_CREATE)) {
+        if (!service_intent?.let { bindService(it, service_connection, BIND_AUTO_CREATE) }!!) {
             Log.e(Application.APP_TAG, "bind to service failed!")
             finish()
         }
