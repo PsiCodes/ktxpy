@@ -1,28 +1,12 @@
-<h2>KtxPy</h2>
-<p align='center'>
-<img width='400px' height='400px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg?sanitize=true' >
-</p>
-<div>
-  <a href='https://github.com/PsiCodes/KtxPy/releases/tag/v1.1.0'>
-    <img width='170px%' alt='Get it on Github' src='https://raw.githubusercontent.com/andOTP/andOTP/master/assets/badges/get-it-on-github.png'/>
-  </a>
+<div align='center'>
+<img alt="KtxPy" width='400px' height='200px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg?sanitize=true'/>
+<p>Developed to run Python 3.11, the latest version of Python, on Android, with Material3 support</p>
+
+<!-- Latest release -->
+<img src="https://img.shields.io/github/v/release/PsiCodes/KtxPy?include_prereleases&amp;label=latest%20release" alt="Latest release">
+<!-- License -->
+<img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></p>
 </div>
-
-
-## Overview
-This Project is Developed for running Python3.11 i.e latest version of android on python,it also comes with Material3.
-
-
-
-## Screenshots
-<p align='center'>
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot1.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot2.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot3.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot5.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot4.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot6.svg?sanitize=true">  
-</p>
 
 ## Features
 
@@ -40,11 +24,20 @@ This Project is Developed for running Python3.11 i.e latest version of android o
 
 - [ ] Gui Libraries
 
+## Screenshots
+<p align='center'>
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot1.svg?sanitize=true">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot2.svg?sanitize=true">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot3.svg?sanitize=true">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot5.svg?sanitize=true">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot4.svg?sanitize=true">
+<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot6.svg?sanitize=true">  
+</p>
+
 ## How to build this source
-Can be Built Using Latest Version Of Android Studio
+Can be built using latest version of Android Studio
 
-Select Build Flavour According to Need ->
-
+Select build flavour according to Need: 
 * Select ` arch_x86_64 ` for x86 64bit CPU Architecture
 * Select ` arch_arm32 ` for arm32 CPU Architecture
 * Select ` arch_arm64 ` for arm64 CPU Architecture
@@ -54,17 +47,18 @@ I would absolutely love every possible kind of contributions. If you
 have a questions, ideas, need help or want to propose a change just open
 an issue. Pull request are greatly appreciated.
 
+## Thanks to
+ - [Rosemoe](https://github.com/Rosemoe)
+ - Roumen Petrov
+ - [Hzy3774](https://github.com/hzy3774)
 
 ## Contributors
 <a href="https://github.com/PsiCodes/KtxPy/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PsiCodes/KtxPy" />
 </a>
 
-## Special Thanks
-Special Thanks To Rosemoe, Roumen Petrov & Hzy3774
-
-## GNU GPL 3.0 Licence
-
+## Licence
+```
     Copyright (C) 2022-2023 PsiCodes
 
     This program is free software: you can redistribute it and/or modify
@@ -79,3 +73,4 @@ Special Thanks To Rosemoe, Roumen Petrov & Hzy3774
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+```
