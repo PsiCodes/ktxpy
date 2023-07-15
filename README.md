@@ -61,7 +61,7 @@ an issue. Pull request are greatly appreciated.
 </a>
 
 ## Special Thanks
-Special Thanks To Rosmoe,Roumen Petrov & Hzy3774
+Special Thanks To Rosemoe,Roumen Petrov & Hzy3774
 
 ## GNU GPL 3.0 Licence
 
