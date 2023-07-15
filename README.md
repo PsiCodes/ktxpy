@@ -1,6 +1,6 @@
 <h2>KtxPy</h2>
 <p align='center'>
-<img width='400px%' height='400px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg?sanitize=true' >
+<img width='400px' height='400px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg?sanitize=true' >
 </p>
 <div>
   <a href='https://github.com/PsiCodes/KtxPy/releases/tag/v1.1.0'>
@@ -61,7 +61,7 @@ an issue. Pull request are greatly appreciated.
 </a>
 
 ## Special Thanks
-Special Thanks To Rosemoe,Roumen Petrov & Hzy3774
+Special Thanks To Rosemoe, Roumen Petrov & Hzy3774
 
 ## GNU GPL 3.0 Licence
 
