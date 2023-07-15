@@ -15,7 +15,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package com.wildzeus.pythonktx.ViewModels
-
 import androidx.lifecycle.ViewModel
 import io.github.rosemoe.sora.text.ContentCreator
 import kotlinx.coroutines.CoroutineScope
@@ -26,7 +25,7 @@ class EditorActivityViewModel(file: File?): ViewModel() {
     var text:String = ""
     init {
         CoroutineScope(Dispatchers.IO).run {
-             text = file?.inputStream()?.let { ContentCreator.fromStream(it).toString() }.toString()
+            text = ContentCreator.fromStream(file?.inputStream()).toString()
         }
     }
 }
