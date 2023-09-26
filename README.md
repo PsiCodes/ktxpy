@@ -47,6 +47,8 @@ I would absolutely love every possible kind of contributions. If you
 have a questions, ideas, need help or want to propose a change just open
 an issue. Pull request are greatly appreciated.
 
+## Donation
+Thanks to [Anshuman](https://github/com/m-anshuman2166) for his kind donation.
 ## Thanks to
  - [Rosemoe](https://github.com/Rosemoe)
  - Roumen Petrov
