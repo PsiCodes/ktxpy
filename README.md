@@ -1,11 +1,11 @@
 <div align='center'>
-<img alt="KtxPy" width='400px' height='200px' src='https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/Vector.svg?sanitize=true'/>
-<p>Developed to run Python 3.11, the latest version of Python, on Android, with Material3 support</p>
+<img alt="KtxPy" width='200px' height='200px' src='Images/App-Icon.svg?sanitize=true'/>
+<p><strong>Developed To Run Python On Android With Material3 Support</strong></p>
 
 <!-- Latest release -->
 <img src="https://img.shields.io/github/v/release/PsiCodes/KtxPy?include_prereleases&amp;label=latest%20release" alt="Latest release">
 <!-- License -->
-<img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></p>
+<img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License">
 </div>
 
 ## Features
@@ -18,27 +18,32 @@
 
 - [x] X86 support
 
+- [x] Multi File Editing 
+
 - [x] Pip
 
 - [ ] Scikit Learn
 
 - [ ] Gui Libraries
 
+- [ ] Scope Storage
+
 ## Screenshots
 <p align='center'>
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot1.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot2.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot3.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot5.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot4.svg?sanitize=true">
-<img style="width: 30%; height: 96%; padding-right: 10px" src="https://raw.githubusercontent.com/PsiCodes/KtxPy/master/Images/ScreenShots/ScreenShot6.svg?sanitize=true">  
+<img style="width: 30%; height: 96%; padding-right: 10px" src=Images/ScreenShots/ScreenShot-AbyssDark.svg>
+<img style="width: 30%; height: 96%; padding-right: 10px" src=Images/ScreenShots/ScreenShot-Dracula.svg>
+<img style="width: 30%; height: 96%; padding-right: 10px" src=Images/ScreenShots/ScreenShot-QuietLight.svg>
+<img style="width: 30%; height: 96%; padding-right: 10px" src=Images/ScreenShots/ScreenShot-Home.svg>
+<img style="width: 30%; height: 96%; padding-right: 10px" src=Images/ScreenShots/ScreenShot-Drawer.svg>
+<img style="width: 30%; height: 96%; padding-right: 10px" src=Images/ScreenShots/ScreenShot-Terminal.svg>  
 </p>
 
 ## How to build this source
 Can be built using latest version of Android Studio
 
 Select build flavour according to Need: 
-* Select ` arch_x86_64 ` for x86 64bit CPU Architecture
+* Select ` arch_x86_64 ` for x86 64 bit CPU Architecture
+* Select ` arch_x86 ` for x86 32 bit CPU Architecture
 * Select ` arch_arm32 ` for arm32 CPU Architecture
 * Select ` arch_arm64 ` for arm64 CPU Architecture
 
@@ -51,7 +56,7 @@ an issue. Pull request are greatly appreciated.
 Thanks to [Anshuman](https://github.com/m-anshuman2166) For Donation.
 ## Thanks to
  - [Rosemoe](https://github.com/Rosemoe)
- - Roumen Petrov
+ - [Termux Team](https://github.com/Termux)
  - [Hzy3774](https://github.com/hzy3774)
 
 ## Contributors

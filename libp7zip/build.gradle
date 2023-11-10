@@ -1,15 +1,11 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'com.novoda.bintray-release'
-//apply plugin: 'com.github.panpf.bintray-publish'
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 33
-        versionCode 8
-        versionName "1.7.1"
+        minSdkVersion 26
+        targetSdkVersion 34
         externalNativeBuild {
             cmake {
                 arguments '-DANDROID_STL=c++_static', '-DANDROID_PLATFORM=android-18'
@@ -31,10 +27,11 @@ android {
             path 'src/main/cpp/CMakeLists.txt'
         }
     }
-    lintOptions {
+    ndkVersion '25.1.8937393'
+    namespace 'com.hzy.libp7zip'
+    lint {
         abortOnError false
     }
-    ndkVersion '25.1.8937393'
 }
 
 dependencies {

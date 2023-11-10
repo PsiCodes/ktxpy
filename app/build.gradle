@@ -1,15 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.devtools.ksp' version '1.8.21-1.0.11'
+    id 'com.google.devtools.ksp' version '1.9.10-1.0.13'
 }
 
 android {
-    namespace 'com.wildzeus.pythonktx'
+    namespace 'github.psicodes.ktxpy'
     compileSdk 34
     ndkVersion '25.1.8937393'
     defaultConfig {
-        applicationId "com.wildzeus.pythonktx"
+        applicationId "github.psicodes.ktxpy"
         minSdk 26
         targetSdk 34
         versionName "1.1.0"
@@ -25,28 +25,27 @@ android {
                 useSupportLibrary true
             }
     }
-        externalNativeBuild {
-             cmake {
-                 path "src/CMakeLists.txt"
-                 version '3.22.1'
-             }
-        }
-    flavorDimensions "cpuArch"
+    flavorDimensions += "cpuArch"
     productFlavors {
         arch_arm32 {
             dimension 'cpuArch'
-            versionCode 3*1000+1
+            versionCode 4*1000+1
             versionNameSuffix "-arm32"
         }
         arch_arm64 {
             dimension 'cpuArch'
-            versionCode 2*1000+1
+            versionCode 3*1000+1
             versionNameSuffix "-arm64"
+        }
+        arch_x86 {
+            dimension 'cpuArch'
+            versionCode 2*1000+1
+            versionNameSuffix "-x86"
         }
         arch_x86_64 {
             dimension 'cpuArch'
             versionCode 1*1000+1
-            versionNameSuffix "-x86"
+            versionNameSuffix "-x86_64"
         }
     }
         buildFeatures.viewBinding = true
@@ -58,8 +57,8 @@ android {
             }
         }
         compileOptions {
-            sourceCompatibility JavaVersion.VERSION_11
-            targetCompatibility JavaVersion.VERSION_11
+            sourceCompatibility JavaVersion.VERSION_17
+            targetCompatibility JavaVersion.VERSION_17
         }
     kotlin {
         sourceSets {
@@ -72,16 +71,15 @@ android {
         }
     }
         kotlinOptions {
-            jvmTarget = "11"
             freeCompilerArgs += [
                     "-Xjvm-default=all"
             ]
         }
+        composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.3"
+        }
         buildFeatures {
             compose true
-        }
-        composeOptions {
-            kotlinCompilerExtensionVersion '1.4.7'
         }
     splits{
         abi {
@@ -92,11 +90,7 @@ android {
         }
     }
     sourceSets {
-        arch_x86_64 {
-            sourceSets {
-                assets.srcDirs = ["arch_x86_64/assets"]
-            }
-        }
+
         arch_arm64{
             sourceSets {
                 assets.srcDirs = ["arch_arm64-v8a/assets"]
@@ -107,45 +101,69 @@ android {
                 assets.srcDirs = ["arch_arm32/assets"]
             }
         }
+        arch_x86 {
+            sourceSets {
+                assets.srcDirs = ["arch_x86/assets"]
+            }
+        }
+        arch_x86_64 {
+            sourceSets {
+                assets.srcDirs = ["arch_x86_64/assets"]
+            }
+        }
+    }
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
     }
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.*'])
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation project(":libtermexec1")
-    implementation project(":emulatorview1")
-    implementation project(':libp7zip')
-    def compose_version="1.3.0 "
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
-    implementation 'androidx.activity:activity-compose:1.6.1'
-    implementation "androidx.compose.ui:ui:1.3.0"
-    testImplementation 'junit:junit:4.13.2'
-    implementation(platform('io.github.Rosemoe.sora-editor:bom:0.18.1'))
-    // implementation "androidx.preference.PreferenceFragmentCompat"
-    implementation 'io.github.Rosemoe.sora-editor:language-python:0.8.4'
-    implementation('io.github.Rosemoe.sora-editor:editor-lsp:0.18.1')
-    implementation group: 'org.tukaani', name: 'xz', version: '1.9'
+    //Android Related
+    implementation('androidx.core:core-ktx:1.12.0')
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation "androidx.datastore:datastore-preferences:1.0.0"
+    implementation "androidx.datastore:datastore-preferences-core:1.0.0"
+    implementation('androidx.activity:activity-compose:1.8.0')
+    implementation(platform('androidx.compose:compose-bom:2023.10.00'))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.runtime:runtime-livedata")
+    implementation("androidx.compose.ui:ui-graphics")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3")
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation ('androidx.constraintlayout:constraintlayout:2.1.4')
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+
+    // lib AndroidUtilCode by  BlankJ
+    implementation("com.blankj:utilcodex:1.31.1")
+
+    // lib terminal-view and terminal-editor by Termux
+    implementation("com.github.termux.termux-app:terminal-view:v0.118.0")
+    implementation("com.github.termux.termux-app:terminal-emulator:v0.118.0")
+
+    // lib : p7zip by Hzy3774
+    implementation project(':libp7zip')
+
+    // lib : Sora-editor by Rosemoe
     implementation 'io.github.Rosemoe.sora-editor:editor'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    implementation 'io.github.raamcosta.compose-destinations:animations-core:1.7.26-beta'
-    ksp 'io.github.raamcosta.compose-destinations:ksp:1.7.26-beta'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation 'org.apache.commons:commons-compress:1.22'
-    implementation ("androidx.preference:preference:1.2.0") {
-        implementation("io.github.Rosemoe.sora-editor:language-textmate")
-        implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
-        implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-        implementation "androidx.compose.ui:ui-tooling-preview:1.3.0"
-        implementation 'androidx.compose.material3:material3:1.1.0-alpha01'
-        // work-around for duplicate class and appcompat 1.5.*
-        exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel'
-        exclude group: 'androidx.lifecycle', module:'lifecycle-viewmodel-ktx'
-    }
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:1.3.0"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:1.3.0"
+    implementation(platform('io.github.Rosemoe.sora-editor:bom:0.22.1'))
+    implementation("io.github.Rosemoe.sora-editor:language-textmate")
+
+    // lib : Compose-Destination by RaamCosta
+    implementation 'io.github.raamcosta.compose-destinations:animations-core:1.9.54'
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.9.54'
+
+    // Test
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.5.4'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest:1.5.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
 }
 

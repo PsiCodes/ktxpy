@@ -1,174 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:installLocation="auto"
-    android:sharedUserId="${applicationId}"
-    >
+    package="github.psicodes.ktxpy"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false"/>
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission
-        android:name="android.permission.MANAGE_EXTERNAL_STORAGE">
-        <!-- Not used on Android 11 (API Level 30), so limit to 29 (Android 10)
-        as android:requestLegacyExternalStorage is set -->
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-
-    <!-- development/system permissions, sample:
-    $ adb shell pm grant com.termoneplus android.permission.DUMP
-    -->
-    <uses-permission
-        android:name="android.permission.DUMP"
-        tools:ignore="ProtectedPermissions">
-        <!-- https://developer.android.com/studio/command-line/dumpsys -->
-    </uses-permission>
-    <permission
-        android:name="${applicationId}.permission.RUN_SCRIPT"
-        android:description="@string/permdesc_run_script"
-        android:label="@string/perm_run_script"
-        android:permissionGroup="${applicationId}.permission-group.TERMINAL"
-        android:protectionLevel="dangerous"/>
-    <!-- deprecated: pending removal -->
-    <permission
-        android:name="${applicationId}.permission.APPEND_TO_PATH"
-        android:description="@string/permdesc_append_to_path"
-        android:label="@string/perm_append_to_path"
-        android:permissionGroup="${applicationId}.permission-group.TERMINAL"
-        android:protectionLevel="signature"/>
-    <!-- deprecated: pending removal -->
-    <permission
-        android:name="${applicationId}.permission.PREPEND_TO_PATH"
-        android:description="@string/permdesc_prepend_to_path"
-        android:label="@string/perm_prepend_to_path"
-        android:permissionGroup="${applicationId}.permission-group.TERMINAL"
-        android:protectionLevel="signature"/>
-
-    <permission-group
-        android:name="${applicationId}.permission-group.TERMINAL"
-        android:description="@string/permdesc_grp_term"
-        android:label="@string/perm_grp_term"/>
     <application
-        android:name="com.Application"
+        android:name="github.psicodes.ktxpy.Application"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:extractNativeLibs="true"
-        tools:targetApi="31">
+        android:requestLegacyExternalStorage="true"
+        tools:targetApi="34">
         <activity
-            android:name=".Activities.WelcomeActivity"
-            android:theme="@style/Theme.PythonkTX"
-            android:exported="true">
+            android:name="github.psicodes.ktxpy.activities.TermActivity"
+            android:theme="@style/Theme.PythonKTX"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            />
+        <activity
+            android:name="github.psicodes.ktxpy.activities.HomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.PythonKTX">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
-            android:name=".Activities.EditorActivity"
-            android:theme="@style/Theme.LayoutBasedActivities"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.termoneplus.TermActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:name="github.psicodes.ktxpy.activities.EditorActivity"
+            android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustResize"
-            >
-        </activity>
-        <activity
-            android:name="jackpal.androidterm.RemoteInterface"
-            android:excludeFromRecents="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="${applicationId}.OPEN_NEW_WINDOW"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/x-python" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
             </intent-filter>
         </activity>
-
-        <activity-alias
-            android:name=".TermHere"
-            android:exported="true"
-            android:label="@string/activity_term_here_title"
-            android:targetActivity="jackpal.androidterm.RemoteInterface">
-            <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-
-                <data android:mimeType="*/*"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity-alias>
-
-        <activity
-            android:name="jackpal.androidterm.RunScript"
-            android:excludeFromRecents="true"
-            android:exported="true"
-            android:permission="${applicationId}.permission.RUN_SCRIPT">
-            <intent-filter>
-                <action android:name="${applicationId}.RUN_SCRIPT"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="jackpal.androidterm.RunShortcut"
-            android:excludeFromRecents="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="${applicationId}.RUN_SHORTCUT"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <service
-            android:name="jackpal.androidterm.TermService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="jackpal.androidterm.action.START_TERM.v1"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </service>
-        <meta-data
-            android:name="com.sec.android.support.multiwindow"
-            android:value="true">
-        </meta-data>
-        <!-- Note unused if resizeableActivity is true (default).
-        Render on full screen up to screen aspect ratio of "value"
-        Use a letterbox on screens larger than "value".
-        Recommend a ratio of 2.4 (12:5 > 21:9). -->
-        <meta-data
-            android:name="android.max_aspect"
-            android:value="2.4"/>
-        <!-- https://developer.samsung.com/samsung-dex/modify-optimizing.html
-        Declares keepalive in the android manifest file, to avoid the process being
-        killed when switching between mobile and Samsung DeX. In addition, set the
-        android:configChanges to avoid restarting the app during the switching process.
-        -->
-        <meta-data
-            android:name="com.samsung.android.multidisplay.keep_process_alive"
-            android:value="true">
-            <!-- Version >= 3.0. DeX Dual Mode support -->
-        </meta-data>
-        <meta-data
-            android:name="com.samsung.android.keepalive.density"
-            android:value="true">
-            <!-- Version < 3.0. DeX Mode and Screen Mirroring support -->
-        </meta-data>
     </application>
 
 </manifest>

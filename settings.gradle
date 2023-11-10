@@ -17,6 +17,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "PythonkTX"
 include ':app'
-include ':emulatorview1'
-include ':libtermexec1'
 include ':libp7zip'

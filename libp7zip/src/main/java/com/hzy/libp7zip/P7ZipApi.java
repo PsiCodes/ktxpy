@@ -1,7 +1,5 @@
 package com.hzy.libp7zip;
 
-import java.io.InputStream;
-
 /**
  * Created by huzongyao on 17-7-5.
  */
@@ -18,7 +16,7 @@ public class P7ZipApi {
      *
      * @param command command string
      * @return  exit code
-     * @see com.hzy.libp7zip.ExitCode
+     * @see ExitCode
      */
     public static native int executeCommand(String command);
 

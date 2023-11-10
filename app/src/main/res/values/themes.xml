@@ -1,73 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.PythonkTX" parent="android:Theme.Material.Light.NoActionBar" />
-    <style name="Theme.LayoutBasedActivities" parent="Theme.AppCompat.DayNight.DarkActionBar"/>
-    <!-- "TermOne Plus" "Dark" theme(default) -->
-    <style name="BaseAppTheme" parent="Theme.AppCompat">
-        <!-- color for the appbar and other primary UI elements -->
-        <item name="colorPrimary">#000000</item>
-        <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#8BC34A</item><!--Light Green 50, 500-->
-        <!-- custom application attributes -->
-        <item name="colorPrimaryLight">#000000</item>
-        <item name="themeTextColor">?android:attr/textColorPrimary</item>
+    <style name="Theme.PythonKTX" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.LayoutBasedActivities" parent="ThemeOverlay.Material3.DynamicColors.DayNight"/>
+    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/md_theme_dark_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_dark_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_dark_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_dark_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_theme_dark_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_dark_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_dark_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_dark_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_dark_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_dark_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_dark_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_dark_onTertiaryContainer</item>
+        <item name="colorError">@color/md_theme_dark_error</item>
+        <item name="colorOnError">@color/md_theme_dark_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_dark_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_dark_onErrorContainer</item>
+        <item name="colorOutline">@color/md_theme_dark_outline</item>
+        <item name="android:colorBackground">@color/md_theme_dark_background</item>
+        <item name="colorOnBackground">@color/md_theme_dark_onBackground</item>
+        <item name="colorSurface">@color/md_theme_dark_surface</item>
+        <item name="colorOnSurface">@color/md_theme_dark_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_dark_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_dark_onSurfaceVariant</item>
+        <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
     </style>
-
-    <!-- "TermOne Plus" "Light" theme -->
-    <style name="BaseAppTheme.Light" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">#000000</item>
-        <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#AED581</item><!--Light Green 50, 300-->
-        <item name="colorPrimaryLight">#B0BEC5</item>
-        <item name="themeTextColor">?android:attr/textColorPrimary</item>
-    </style>
-
-    <!-- "TermOne Plus" "DayNight" theme(system) -->
-    <style name="BaseAppTheme.DayNight" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">#000000</item>
-        <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#8BC34A</item><!--Light Green 50, 500-->
-        <item name="colorPrimaryLight">#000000</item>
-        <item name="themeTextColor">?android:attr/textColorPrimary</item>
-    </style>
-
-    <!-- actual "Dark" theme overridden at API level -->
-    <style name="AppTheme" parent="BaseAppTheme"/>
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="actionModeBackground">?attr/colorPrimary</item>
-    </style>
-
-    <!-- actual "Light" theme overridden at API level -->
-    <style name="AppTheme.Light" parent="BaseAppTheme.Light"/>
-
-    <style name="AppTheme.Light.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="actionModeBackground">?attr/colorPrimary</item>
-    </style>
-
-    <!-- actual "DayNight" theme overridden at API level -->
-    <style name="AppTheme.DayNight" parent="BaseAppTheme.DayNight"/>
-
-    <style name="AppTheme.DayNight.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="windowActionModeOverlay">true</item>
-        <item name="actionModeBackground">?attr/colorPrimary</item>
-    </style>
-
-    <!-- style used in "AddShortcut" activity -->
-    <style name="AppTheme.NoActionBar.Translucent">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation</item>
-    </style>
-
 </resources>
