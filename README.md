@@ -8,6 +8,10 @@
 <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License">
 </div>
 
+## Notice
+
+This project  will not be updated by me till June 2025.
+
 ## Features
 
 - [x] Python Latest Version
